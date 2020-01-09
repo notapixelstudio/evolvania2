@@ -26,8 +26,10 @@ func _process(delta):
 	# use the animation state machine for gameplay purposes too
 	var current_state = state_machine.get_current_node()
 	
-	# read left / right input
-	var x_dir = int(Input.is_action_pressed('ui_right'))-int(Input.is_action_pressed('ui_left'))
+	# read controls
+	var x_dir = $Controls.x_dir if has_node('Controls') else 0
+	var jump_just_requested = $Controls.jump_just_requested if has_node('Controls') else false
+	var jump_just_released = $Controls.jump_just_released if has_node('Controls') else false
 	
 	### running on a platform
 	# start
@@ -39,7 +41,7 @@ func _process(delta):
 		state_machine.travel('Idle')
 		
 	### jumping from a platform
-	if (current_state == 'Idle' or current_state == 'Running') and Input.is_action_just_pressed('ui_accept'):
+	if (current_state == 'Idle' or current_state == 'Running') and jump_just_requested:
 		state_machine.travel('Jumping')
 	
 	### falling
@@ -47,7 +49,7 @@ func _process(delta):
 		state_machine.travel('Falling')
 		
 	# controllable height of jump
-	if current_state == 'Jumping' and Input.is_action_just_released("ui_accept"):
+	if current_state == 'Jumping' and jump_just_released:
 		state_machine.travel('Falling')
 		
 	### landing

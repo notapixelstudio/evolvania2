@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/levels/old_book_texture.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/levels/tile_solid.png" type="Texture" id=2]
-[ext_resource path="res://Hero.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Diamond.tscn" type="PackedScene" id=4]
-[ext_resource path="res://HUD/LifeCounter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Character.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Controls.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Diamond.tscn" type="PackedScene" id=5]
+[ext_resource path="res://HUD/LifeCounter.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
@@ -57,9 +58,11 @@ tile_data = PoolIntArray( -655327, 0, 0, -655326, 0, 0, -655325, 0, 0, -655324, 
 [node name="Hero" parent="." instance=ExtResource( 3 )]
 position = Vector2( 440, 1679.99 )
 dna = {
-"horn": true,
-"pigmy": true
+"horn": false,
+"pigmy": false
 }
+
+[node name="Controls" parent="Hero" instance=ExtResource( 4 )]
 
 [node name="Camera2D" type="Camera2D" parent="Hero"]
 position = Vector2( 0, -200 )
@@ -68,7 +71,7 @@ limit_bottom = 3000
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
-[node name="Diamond" parent="." instance=ExtResource( 4 )]
+[node name="Diamond" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2520, 1880 )
 
 [node name="Exit" type="Area2D" parent="."]
@@ -82,7 +85,7 @@ shape = SubResource( 3 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="LifeCounter" parent="HUD" instance=ExtResource( 5 )]
+[node name="LifeCounter" parent="HUD" instance=ExtResource( 6 )]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_right = 40.0
