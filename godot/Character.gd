@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Character
+
 export var x_speed : float = 700.0
 export var air_x_speed: float = 550.0
 export var jump_speed: float = 1500.0
