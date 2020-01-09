@@ -23,6 +23,11 @@ _global_script_class_icons={
 config/name="Evolvania 2"
 run/main_scene="res://World.tscn"
 
+[display]
+
+window/size/resizable=false
+window/size/fullscreen=true
+
 [input]
 
 ui_left={

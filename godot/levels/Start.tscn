@@ -142,7 +142,7 @@ dna = {
 
 [node name="Camera2D" type="Camera2D" parent="Hero"]
 current = true
-limit_bottom = 2400
+limit_bottom = 2600
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
