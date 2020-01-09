@@ -9,7 +9,8 @@
 [ext_resource path="res://Character.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Controls.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Diamond.tscn" type="PackedScene" id=9]
-[ext_resource path="res://HUD/LifeCounter.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Exit.tscn" type="PackedScene" id=10]
+[ext_resource path="res://HUD/LifeCounter.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
@@ -66,9 +67,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 120, 40 )
 
 [node name="Level" type="Node2D"]
 
@@ -149,18 +147,12 @@ drag_margin_v_enabled = false
 [node name="Diamond" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2520, 1844.5 )
 
-[node name="Exit" type="Area2D" parent="."]
-position = Vector2( 4880, 3200 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-shape = SubResource( 3 )
+[node name="Exit" parent="." instance=ExtResource( 10 )]
+to_level = "res://levels/Start.tscn"
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="LifeCounter" parent="HUD" instance=ExtResource( 10 )]
+[node name="LifeCounter" parent="HUD" instance=ExtResource( 11 )]
 
 [editable path="fig002"]
 
