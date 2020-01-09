@@ -3,8 +3,8 @@ extends KinematicBody2D
 export var x_speed : float = 700.0
 export var air_x_speed: float = 550.0
 export var jump_speed: float = 1500.0
-export var jump_gravity : float = 50.0
-export var gravity : float = 120.0
+export var jump_gravity : float = 3000.0
+export var gravity : float = 7800.0
 
 onready var state_machine = $AnimationTree.get('parameters/playback')
 
@@ -57,9 +57,9 @@ func _process(delta):
 	
 	### gravity
 	if current_state == 'Jumping':
-		velocity.y += jump_gravity
+		velocity.y += jump_gravity * delta
 	else:
-		velocity.y += gravity
+		velocity.y += gravity * delta
 		
 	velocity = move_and_slide(velocity, Vector2(0,-1)) # second arg is the floor normal, needed by is_on_floor()
 	

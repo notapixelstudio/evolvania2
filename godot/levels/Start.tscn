@@ -79,3 +79,7 @@ shape = SubResource( 3 )
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="LifeCounter" parent="HUD" instance=ExtResource( 5 )]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
