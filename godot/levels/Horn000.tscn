@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://levels/LevelTemplate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/levels/old_book_texture.jpg" type="Texture" id=2]
@@ -33,10 +33,17 @@ points = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
 } ]
 0/z_index = 0
 
-[node name="Level" instance=ExtResource( 1 )]
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 160, 400 )
+
+[node name="Level" index="0" instance=ExtResource( 1 )]
 
 [node name="HUD" parent="." index="0"]
 editor/display_folded = true
+
+[node name="LifeCounter" parent="HUD" index="0"]
+life = 3
+max_life = 3
 
 [node name="old_book_texture" type="Sprite" parent="." index="1"]
 position = Vector2( 1280, -560 )
@@ -71,12 +78,22 @@ texture = ExtResource( 5 )
 editor/display_folded = true
 position = Vector2( -2320, 1840 )
 
+[node name="CollisionShape2D" parent="fig002/ShowArea" index="0"]
+position = Vector2( 560, -160.01 )
+
 [node name="Text" type="Sprite" parent="fig002" index="2"]
 texture = ExtResource( 6 )
 
 [node name="fig003" parent="." index="6" instance=ExtResource( 4 )]
 editor/display_folded = true
 position = Vector2( 2520, 2320 )
+
+[node name="CollisionShape2D" parent="fig003/ShowArea" index="0"]
+position = Vector2( -400, -520 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="fig003/ShowArea" index="1"]
+position = Vector2( 400, -520 )
+shape = SubResource( 3 )
 
 [node name="Text" type="Sprite" parent="fig003" index="2"]
 texture = ExtResource( 7 )
@@ -100,4 +117,9 @@ drag_margin_v_enabled = false
 position = Vector2( 2520, 1844.5 )
 
 [node name="Exit" parent="." index="9" instance=ExtResource( 11 )]
-to_level = "res://levels/Horn000.tscn"
+to_level = "res://levels/Horn001.tscn"
+
+
+[editable path="fig002"]
+
+[editable path="fig003"]
