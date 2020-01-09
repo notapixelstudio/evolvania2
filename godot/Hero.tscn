@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Hero.gd" type="Script" id=1]
 [ext_resource path="res://assets/body.png" type="Texture" id=2]
@@ -12,8 +12,9 @@
 [ext_resource path="res://assets/walk_0007.png" type="Texture" id=10]
 [ext_resource path="res://assets/head_eyes_shut.png" type="Texture" id=11]
 [ext_resource path="res://assets/head.png" type="Texture" id=12]
+[ext_resource path="res://assets/horn.png" type="Texture" id=13]
 
-[sub_resource type="SpriteFrames" id=24]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
@@ -26,7 +27,7 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="SpriteFrames" id=25]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 11 ) ],
 "loop": true,
@@ -34,14 +35,14 @@ animations = [ {
 "speed": 4.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=26]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 38, 40 )
 
-[sub_resource type="CapsuleShape2D" id=27]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 38.0
 height = 40.0
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=5]
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
@@ -93,7 +94,7 @@ tracks/3/keys = {
 "values": [ 0.0, 7.0 ]
 }
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id=6]
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -145,7 +146,7 @@ tracks/3/keys = {
 "values": [ 0.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=30]
+[sub_resource type="Animation" id=7]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Graphics/head:position")
@@ -196,9 +197,9 @@ tracks/3/keys = {
 "values": [ 15.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id=8]
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id=9]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -295,44 +296,57 @@ states/Running/position = Vector2( 366, 80 )
 transitions = [ "Idle", "Running", SubResource( 15 ), "Running", "Idle", SubResource( 16 ), "Running", "Jumping", SubResource( 17 ), "Jumping", "Falling", SubResource( 18 ), "Idle", "Falling", SubResource( 19 ), "Falling", "Idle", SubResource( 20 ), "Idle", "Jumping", SubResource( 21 ), "Running", "Falling", SubResource( 22 ) ]
 start_node = "Idle"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=33]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
 [node name="Hero" type="KinematicBody2D"]
+position = Vector2( 0, 5.51221e+06 )
 script = ExtResource( 1 )
+dna = {
+"horn": false,
+"pigmy": false
+}
 
 [node name="Graphics" type="Node2D" parent="."]
 
 [node name="body" type="AnimatedSprite" parent="Graphics"]
 position = Vector2( 0, -130 )
-scale = Vector2( -0.505517, 0.5 )
-frames = SubResource( 24 )
+scale = Vector2( -0.521952, 0.5 )
+frames = SubResource( 1 )
 animation = "idle"
 
 [node name="head" type="AnimatedSprite" parent="Graphics"]
-position = Vector2( 0, -129.912 )
+position = Vector2( 0, -129.054 )
 scale = Vector2( -0.5, 0.5 )
-frames = SubResource( 25 )
+frames = SubResource( 2 )
 animation = "idle"
-frame = 13
+frame = 8
 playing = true
+
+[node name="horn" type="Sprite" parent="Graphics/head"]
+visible = false
+position = Vector2( 0, -0.518036 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 13 )
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -40 )
-shape = SubResource( 26 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -85 )
-shape = SubResource( 27 )
+shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Falling = SubResource( 28 )
-anims/Idle = SubResource( 29 )
-anims/Jumping = SubResource( 30 )
-anims/Null = SubResource( 31 )
-anims/Running = SubResource( 32 )
+anims/Falling = SubResource( 5 )
+anims/Idle = SubResource( 6 )
+anims/Jumping = SubResource( 7 )
+anims/Null = SubResource( 8 )
+anims/Running = SubResource( 9 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 23 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 33 )
+parameters/playback = SubResource( 24 )

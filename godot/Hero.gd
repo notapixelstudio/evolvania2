@@ -12,6 +12,16 @@ var old_state = null
 
 var velocity : Vector2 = Vector2(0,0)
 
+export var dna = {
+	'horn': false,
+	'pigmy': false
+}
+	
+func _ready():
+	$Graphics/head/horn.visible = dna.horn
+	if dna.pigmy:
+		scale = Vector2(0.8,0.8)
+	
 func _process(delta):
 	# use the animation state machine for gameplay purposes too
 	var current_state = state_machine.get_current_node()

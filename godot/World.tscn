@@ -23,6 +23,12 @@ position = Vector2( 80, -305 )
 [node name="Platform5" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1040, -80 )
 
+[node name="Platform13" parent="." instance=ExtResource( 1 )]
+position = Vector2( -160, 200 )
+
+[node name="Platform14" parent="." instance=ExtResource( 1 )]
+position = Vector2( -160, 400 )
+
 [node name="Platform11" parent="." instance=ExtResource( 1 )]
 position = Vector2( 80, 89 )
 
@@ -43,6 +49,10 @@ position = Vector2( 3200, -80 )
 
 [node name="Hero" parent="." instance=ExtResource( 2 )]
 position = Vector2( 200, 400 )
+dna = {
+"horn": false,
+"pigmy": false
+}
 
 [node name="Camera2D" type="Camera2D" parent="Hero"]
 current = true
