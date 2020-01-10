@@ -6,3 +6,8 @@
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 0 )
+dna = {
+"glowing": false,
+"horn": false,
+"pigmy": false
+}

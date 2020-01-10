@@ -52,6 +52,7 @@ position = Vector2( 3200, -80 )
 [node name="Hero" parent="." instance=ExtResource( 2 )]
 position = Vector2( 200, 400 )
 dna = {
+"glowing": false,
 "horn": false,
 "pigmy": false
 }
@@ -64,11 +65,5 @@ current = true
 [node name="Checkpoint" parent="." instance=ExtResource( 4 )]
 position = Vector2( 720, 315 )
 scale = Vector2( -1, 1 )
-
-[node name="Character" parent="Checkpoint" index="0"]
-dna = {
-"horn": true,
-"pigmy": true
-}
 
 [editable path="Checkpoint"]

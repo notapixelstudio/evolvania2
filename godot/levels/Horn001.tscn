@@ -52,10 +52,6 @@ tile_data = PoolIntArray( -2293755, 0, 0, -2293748, 0, 0, -2228219, 0, 0, -22282
 
 [node name="Hero" parent="." index="3" instance=ExtResource( 4 )]
 position = Vector2( 360, -1240 )
-dna = {
-"horn": false,
-"pigmy": false
-}
 
 [node name="Controls" parent="Hero" index="5" instance=ExtResource( 5 )]
 
