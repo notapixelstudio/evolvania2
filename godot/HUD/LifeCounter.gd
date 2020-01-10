@@ -16,3 +16,6 @@ func refresh():
 	$hearts.region_rect = Rect2(Vector2(0,0), Vector2(80*life,80))
 	$hearts_empty.region_rect = Rect2(Vector2(0,0), Vector2(80*max_life,80))
 	
+func lose_life(amount):
+	set_life(max(0, life - amount))
+	

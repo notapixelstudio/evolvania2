@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Figure.gd" type="Script" id=1]
+[ext_resource path="res://assets/light.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 160, 400 )
@@ -20,6 +21,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 3 ),
+"transitions": PoolRealArray( 0.5, 1, 1 ),
+"update": 0,
+"values": [ 0.01, 0.6, 0.6 ]
+}
 
 [node name="Figure" type="Node2D"]
 script = ExtResource( 1 )
@@ -35,4 +48,8 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Appear = SubResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 2 )
+energy = 0.6
 [connection signal="body_entered" from="ShowArea" to="." method="_on_ShowArea_body_entered"]

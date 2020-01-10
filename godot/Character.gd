@@ -7,20 +7,28 @@ export var air_x_speed: float = 550.0
 export var jump_speed: float = 1500.0
 export var jump_gravity : float = 3000.0
 export var gravity : float = 7800.0
-
-onready var state_machine = $AnimationTree.get('parameters/playback')
-
-var old_state = null
-
-var velocity : Vector2 = Vector2(0,0)
+export var stagger_push : float = 3000.0
 
 export var dna = {
 	'horn': false,
-	'pigmy': false
+	'pigmy': false,
+	'glowing': false
 }
-	
+
+signal harmed
+signal recovered
+
+onready var state_machine = $AnimationTree.get('parameters/playback')
+onready var last_safe_position : Vector2 = position
+
+
+var old_state = null
+var velocity : Vector2 = Vector2(0,0)
+
+
 func _ready():
 	$Graphics/head/horn.visible = dna.horn
+	$Graphics/glow.visible = dna.glowing
 	if dna.pigmy:
 		scale = Vector2(0.8,0.8)
 	
@@ -62,19 +70,24 @@ func _process(delta):
 	### horizontal movement
 	if current_state == 'Jumping' or current_state == 'Falling':
 		velocity.x = air_x_speed * x_dir
-	else:
+	elif current_state == 'Running':
 		velocity.x = x_speed * x_dir
 		
 	# flipping
-	if x_dir != 0:
+	if current_state != 'Stagger' and x_dir != 0:
 		$Graphics.scale.x = x_dir
 	
 	### gravity
 	if current_state == 'Jumping':
 		velocity.y += jump_gravity * delta
-	else:
+	elif current_state != 'Stagger':
 		velocity.y += gravity * delta
 		
+	### Stagger
+	if current_state == 'Stagger':
+		velocity = Vector2(0,0)
+		
+	
 	velocity = move_and_slide(velocity, Vector2(0,-1)) # second arg is the floor normal, needed by is_on_floor()
 	
 	
@@ -89,3 +102,17 @@ func _on_state_changed(old_name, new_name):
 	
 	if new_name == 'Jumping':
 		velocity.y = -jump_speed
+		
+	if old_name == 'Idle':
+		last_safe_position = position
+		
+	if new_name == 'Stagger':
+		emit_signal('harmed')
+		
+	if old_name == 'Stagger':
+		emit_signal('recovered')
+		position = last_safe_position
+		
+func harm():
+	state_machine.travel('Stagger')
+	
