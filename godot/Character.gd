@@ -1,3 +1,4 @@
+tool
 extends KinematicBody2D
 
 class_name Character
@@ -9,11 +10,13 @@ export var jump_gravity : float = 3000.0
 export var gravity : float = 7800.0
 export var stagger_push : float = 3000.0
 
-export var dna = {
-	'horn': false,
-	'pigmy': false,
-	'glowing': false
-}
+enum diets {NONE, HERBIVORE, CARNIVORE}
+
+export var horn = false setget set_horn
+export (diets) var diet = diets.NONE setget set_diet
+export var ears = false setget set_ears
+export var pigmy = false setget set_pigmy
+export var glowing = false setget set_glowing
 
 signal harmed
 signal recovered
@@ -27,12 +30,59 @@ var velocity : Vector2 = Vector2(0,0)
 
 
 func _ready():
-	$Graphics/head/horn.visible = dna.horn
-	$Graphics/glow.visible = dna.glowing
-	if dna.pigmy:
+	refresh()
+	
+func set_horn(value):
+	horn = value
+	refresh()
+	
+func set_ears(value):
+	ears = value
+	refresh()
+	
+func set_diet(value):
+	diet = value
+	refresh()
+	
+func set_pigmy(value):
+	pigmy = value
+	refresh()
+	
+func set_glowing(value):
+	glowing = value
+	refresh()
+	
+func refresh():
+	$Graphics/Head/Top/horn.visible = horn
+	$Graphics/Head/Top/ears.visible = ears
+	$Graphics/glow.visible = glowing
+	
+	if pigmy:
 		scale = Vector2(0.8,0.8)
+		$Graphics/Head/head.visible = false
+		$Graphics/Head/head_pigmy.visible = true
+		$Graphics/Head/Top.position.y = 50
+	else:
+		scale = Vector2(1,1)
+		$Graphics/Head/head.visible = true
+		$Graphics/Head/head_pigmy.visible = false
+		$Graphics/Head/Top.position.y = 0
+		
+	$Graphics/Head/mouth.visible = false
+	$Graphics/Head/mouth_herbivore.visible = false
+	$Graphics/Head/mouth_carnivore.visible = false
+	if diet == diets.NONE:
+		$Graphics/Head/mouth.visible = true
+	elif diet == diets.HERBIVORE:
+		$Graphics/Head/mouth_herbivore.visible = true
+	elif diet == diets.CARNIVORE:
+		$Graphics/Head/mouth_carnivore.visible = true
+		
 	
 func _process(delta):
+	if Engine.is_editor_hint():
+		return
+	
 	# use the animation state machine for gameplay purposes too
 	var current_state = state_machine.get_current_node()
 	

@@ -116,11 +116,6 @@ texture = ExtResource( 8 )
 
 [node name="Hero" parent="." index="8" instance=ExtResource( 9 )]
 position = Vector2( 440, 1679.99 )
-dna = {
-"glowing": true,
-"horn": true,
-"pigmy": false
-}
 
 [node name="Controls" parent="Hero" index="5" instance=ExtResource( 10 )]
 
@@ -170,6 +165,7 @@ position = Vector2( -1320, 480 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 16 )
 energy = 0.5
+
 
 [editable path="fig002"]
 
