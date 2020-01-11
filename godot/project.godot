@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Evolvania 2"
-run/main_scene="res://World.tscn"
+run/main_scene="res://levels/Horn000.tscn"
 
 [display]
 
