@@ -393,12 +393,12 @@ color = Color( 0.462745, 0.486275, 0.996078, 1 )
 
 [node name="body" type="AnimatedSprite" parent="Graphics"]
 position = Vector2( 0, -130 )
-scale = Vector2( -0.517762, 0.5 )
+scale = Vector2( -0.527865, 0.5 )
 frames = SubResource( 1 )
 animation = "idle"
 
 [node name="Head" type="Node2D" parent="Graphics"]
-position = Vector2( 0, -129.209 )
+position = Vector2( 0, -129.041 )
 scale = Vector2( -0.5, 0.5 )
 
 [node name="head" type="Sprite" parent="Graphics/Head"]

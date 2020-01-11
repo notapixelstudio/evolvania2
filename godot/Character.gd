@@ -8,7 +8,6 @@ export var air_x_speed: float = 550.0
 export var jump_speed: float = 1500.0
 export var jump_gravity : float = 3000.0
 export var gravity : float = 7800.0
-export var stagger_push : float = 3000.0
 
 enum diets {NONE, HERBIVORE, CARNIVORE}
 
@@ -60,8 +59,6 @@ func set_night_vision(value):
 	refresh()
 	
 func refresh():
-	get_parent().refresh()
-	
 	$Graphics/Head/Top/horn.visible = horn
 	$Graphics/Head/Top/ears.visible = ears
 	$Graphics/glow.visible = glowing
@@ -88,6 +85,8 @@ func refresh():
 	elif diet == diets.CARNIVORE:
 		$Graphics/Head/mouth_carnivore.visible = true
 		
+	if Engine.is_editor_hint():
+		get_parent().refresh()
 	
 func _process(delta):
 	if Engine.is_editor_hint():
