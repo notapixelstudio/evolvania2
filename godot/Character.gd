@@ -17,6 +17,7 @@ export (diets) var diet = diets.NONE setget set_diet
 export var ears = false setget set_ears
 export var pigmy = false setget set_pigmy
 export var glowing = false setget set_glowing
+export var night_vision = false setget set_night_vision
 
 signal harmed
 signal recovered
@@ -30,6 +31,8 @@ var velocity : Vector2 = Vector2(0,0)
 
 
 func _ready():
+	$Graphics/Head/eyes.playing = true
+	$Graphics/Head/eyes_spider.playing = true
 	refresh()
 	
 func set_horn(value):
@@ -52,16 +55,23 @@ func set_glowing(value):
 	glowing = value
 	refresh()
 	
+func set_night_vision(value):
+	night_vision = value
+	refresh()
+	
 func refresh():
+	get_parent().refresh()
+	
 	$Graphics/Head/Top/horn.visible = horn
 	$Graphics/Head/Top/ears.visible = ears
 	$Graphics/glow.visible = glowing
+	$Graphics/Head/eyes_spider.visible = night_vision
 	
 	if pigmy:
 		scale = Vector2(0.8,0.8)
 		$Graphics/Head/head.visible = false
 		$Graphics/Head/head_pigmy.visible = true
-		$Graphics/Head/Top.position.y = 50
+		$Graphics/Head/Top.position.y = 40
 	else:
 		scale = Vector2(1,1)
 		$Graphics/Head/head.visible = true
