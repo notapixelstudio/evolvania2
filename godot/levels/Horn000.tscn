@@ -166,7 +166,6 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 16 )
 energy = 0.5
 
-
 [editable path="fig002"]
 
 [editable path="fig003"]

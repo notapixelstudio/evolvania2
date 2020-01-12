@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://Character.gd" type="Script" id=1]
 [ext_resource path="res://assets/light.png" type="Texture" id=2]
@@ -15,15 +15,17 @@
 [ext_resource path="res://assets/character/head_pigmy.png" type="Texture" id=13]
 [ext_resource path="res://assets/character/eyes.png" type="Texture" id=14]
 [ext_resource path="res://assets/character/eyes_shut.png" type="Texture" id=15]
-[ext_resource path="res://assets/character/mouth_basic.png" type="Texture" id=16]
-[ext_resource path="res://assets/character/mouth_herbivore.png" type="Texture" id=17]
-[ext_resource path="res://assets/character/mouth_carnivore.png" type="Texture" id=18]
-[ext_resource path="res://assets/character/ears.png" type="Texture" id=19]
-[ext_resource path="res://assets/character/horn.png" type="Texture" id=20]
-[ext_resource path="res://assets/character/eyes_spider.png" type="Texture" id=21]
-[ext_resource path="res://assets/character/eyes_spider_shut.png" type="Texture" id=22]
-[ext_resource path="res://assets/sfx/one_poc2.ogg" type="AudioStream" id=23]
-[ext_resource path="res://assets/sfx/one_poc.ogg" type="AudioStream" id=24]
+[ext_resource path="res://assets/character/eyes_pain.png" type="Texture" id=16]
+[ext_resource path="res://assets/character/mouth_basic.png" type="Texture" id=17]
+[ext_resource path="res://assets/character/mouth_herbivore.png" type="Texture" id=18]
+[ext_resource path="res://assets/character/mouth_carnivore.png" type="Texture" id=19]
+[ext_resource path="res://assets/character/ears.png" type="Texture" id=20]
+[ext_resource path="res://assets/character/horn.png" type="Texture" id=21]
+[ext_resource path="res://assets/character/eyes_spider.png" type="Texture" id=22]
+[ext_resource path="res://assets/character/eyes_spider_shut.png" type="Texture" id=23]
+[ext_resource path="res://assets/sfx/one_poc2.ogg" type="AudioStream" id=24]
+[ext_resource path="res://assets/sfx/one_poc.ogg" type="AudioStream" id=25]
+[ext_resource path="res://assets/sfx/spine1.wav" type="AudioStream" id=26]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -48,7 +50,7 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ) ],
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ) ],
 "loop": true,
 "name": "default",
 "speed": 3.0
@@ -270,7 +272,7 @@ tracks/3/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 tracks/4/type = "audio"
-tracks/4/path = NodePath("Running")
+tracks/4/path = NodePath("Sound")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -279,16 +281,17 @@ tracks/4/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 23 )
+"stream": ExtResource( 24 )
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 24 )
+"stream": ExtResource( 25 )
 } ],
 "times": PoolRealArray( 0, 0.4 )
 }
 
 [sub_resource type="Animation" id=11]
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Graphics:modulate")
 tracks/0/interp = 1
@@ -312,6 +315,44 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ -10.0, 0.0 ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("Sound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 26 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Graphics/Head/eyes_pain:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Graphics/Head/eyes:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=12]
@@ -393,12 +434,12 @@ color = Color( 0.462745, 0.486275, 0.996078, 1 )
 
 [node name="body" type="AnimatedSprite" parent="Graphics"]
 position = Vector2( 0, -130 )
-scale = Vector2( -0.527865, 0.5 )
+scale = Vector2( -0.52723, 0.5 )
 frames = SubResource( 1 )
 animation = "idle"
 
 [node name="Head" type="Node2D" parent="Graphics"]
-position = Vector2( 0, -129.041 )
+position = Vector2( 0, -129.001 )
 scale = Vector2( -0.5, 0.5 )
 
 [node name="head" type="Sprite" parent="Graphics/Head"]
@@ -411,37 +452,44 @@ texture = ExtResource( 13 )
 
 [node name="eyes" type="AnimatedSprite" parent="Graphics/Head"]
 frames = SubResource( 2 )
+frame = 7
+playing = true
+
+[node name="eyes_pain" type="Sprite" parent="Graphics/Head"]
+visible = false
+texture = ExtResource( 16 )
 
 [node name="mouth" type="Sprite" parent="Graphics/Head"]
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 
 [node name="mouth_herbivore" type="Sprite" parent="Graphics/Head"]
 visible = false
-texture = ExtResource( 17 )
+texture = ExtResource( 18 )
 
 [node name="mouth_carnivore" type="Sprite" parent="Graphics/Head"]
 visible = false
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 
 [node name="Top" type="Node2D" parent="Graphics/Head"]
 editor/display_folded = true
 
 [node name="ears" type="Sprite" parent="Graphics/Head/Top"]
 visible = false
-texture = ExtResource( 19 )
+texture = ExtResource( 20 )
 
 [node name="horn" type="Sprite" parent="Graphics/Head/Top"]
 visible = false
 position = Vector2( 0, -0.518036 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
-texture = ExtResource( 20 )
+texture = ExtResource( 21 )
 flip_h = true
 
 [node name="eyes_spider" type="AnimatedSprite" parent="Graphics/Head"]
 visible = false
-scale = Vector2( 1, 1 )
 frames = SubResource( 3 )
+frame = 7
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -40 )
@@ -465,7 +513,6 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 32 )
 
-[node name="Running" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 24 )
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 25 )
 bus = "SFX"
-
