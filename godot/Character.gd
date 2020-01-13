@@ -6,8 +6,8 @@ class_name Character
 var x_speed : float = 800.0
 var air_x_speed : float = 800.0
 var jump_starting_speed : float = 1400.0
-var ascending_gravity_bonus : float = 5200.0
-var gravity : float = 7800.0
+var ascending_gravity_bonus : float = 6200.0
+var gravity : float = 8800.0
 
 enum diets {NONE, HERBIVORE, CARNIVORE}
 
