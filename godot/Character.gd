@@ -4,8 +4,8 @@ extends KinematicBody2D
 class_name Character
 
 var x_speed : float = 800.0
-var air_x_speed : float = 600.0
-var jump_starting_speed : float = 1600.0
+var air_x_speed : float = 800.0
+var jump_starting_speed : float = 1400.0
 var ascending_gravity_bonus : float = 5200.0
 var gravity : float = 7800.0
 
@@ -93,9 +93,10 @@ func _process(delta):
 		return
 		
 	state_machine.update(delta)
-	velocity += Vector2(0, gravity) * delta # gravity is applied by default
 	velocity = move_and_slide(velocity, Vector2(0,-1)) # second arg is the floor normal, needed by is_on_floor()
 	
+func apply_gravity(delta):
+	velocity += Vector2(0, gravity) * delta
 	
 func update_horizontal_movement(speed):
 	velocity.x = speed * controls.x_dir

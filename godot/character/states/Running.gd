@@ -9,4 +9,5 @@ func update(delta):
 		state_machine.travel('Idle')
 	
 	this.update_horizontal_movement(this.x_speed)
+	this.apply_gravity(delta) # needed to fall
 	

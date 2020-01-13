@@ -11,6 +11,8 @@ func update(delta):
 		state_machine.travel('Falling')
 	elif this.controls.x_dir != 0:
 		state_machine.travel('Running')
+		
+	this.apply_gravity(delta) # needed to fall
 	
 func exit(to):
 	# remember the last safe position to respawn to

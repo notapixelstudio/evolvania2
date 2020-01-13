@@ -45,8 +45,11 @@ position = Vector2( 1680, -80 )
 [node name="Platform7" parent="." instance=ExtResource( 1 )]
 position = Vector2( 2400, -80 )
 
-[node name="Platform8" parent="." instance=ExtResource( 1 )]
+[node name="Platform15" parent="." instance=ExtResource( 1 )]
 position = Vector2( 3200, -80 )
+
+[node name="Platform16" parent="." instance=ExtResource( 1 )]
+position = Vector2( 4040, -80 )
 
 [node name="Hero" parent="." instance=ExtResource( 2 )]
 position = Vector2( 200, 400 )

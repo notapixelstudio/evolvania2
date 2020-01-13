@@ -15,4 +15,5 @@ func update(delta):
 		
 	# can move horizontally while ascending
 	this.update_horizontal_movement(this.air_x_speed)
+	this.apply_gravity(delta) # ascend against gravity
 	
