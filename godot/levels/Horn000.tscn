@@ -44,10 +44,14 @@ points = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 160, 400 )
 
-[node name="Level" instance=ExtResource( 1 )]
+[node name="Level" index="0" instance=ExtResource( 1 )]
 
 [node name="HUD" parent="." index="0"]
 editor/display_folded = true
+
+[node name="LifeCounter" parent="HUD" index="0"]
+life = 3
+max_life = 3
 
 [node name="old_book_texture" type="Sprite" parent="." index="1"]
 position = Vector2( 1280, -560 )
@@ -142,7 +146,7 @@ autoplay = true
 bus = "BGM"
 
 [node name="CanvasModulate" parent="." index="14"]
-color = Color( 0.901961, 0.509804, 0.164706, 1 )
+color = Color( 0.87451, 0.737255, 0.603922, 1 )
 
 [node name="Ray" type="Light2D" parent="." index="15"]
 position = Vector2( -120, 480 )

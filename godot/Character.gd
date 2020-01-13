@@ -88,14 +88,11 @@ func refresh():
 	if Engine.is_editor_hint():
 		get_parent().refresh()
 
-const GRACE_TIME = 4.0
-onready var grace_time = GRACE_TIME
-
 func _process(delta):
 	if Engine.is_editor_hint():
 		return
 		
-	state_machine.update_current_state(delta)
+	state_machine.update(delta)
 	velocity += Vector2(0, gravity) * delta # gravity is applied by default
 	velocity = move_and_slide(velocity, Vector2(0,-1)) # second arg is the floor normal, needed by is_on_floor()
 	
@@ -108,16 +105,3 @@ func update_horizontal_movement(speed):
 func harm():
 	state_machine.travel('Stagger')
 	
-
-func _on_StateMachine_transition(old, new):
-	# log status change
-	print(old, ' -> ', new)
-	
-		
-	if new == 'Stagger':
-		emit_signal('harmed')
-		
-	if old == 'Stagger':
-		emit_signal('recovered')
-		position = last_safe_position
-		
