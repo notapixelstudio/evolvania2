@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://Character.gd" type="Script" id=1]
 [ext_resource path="res://assets/light.png" type="Texture" id=2]
@@ -26,7 +26,11 @@
 [ext_resource path="res://assets/sfx/one_poc2.ogg" type="AudioStream" id=24]
 [ext_resource path="res://assets/sfx/one_poc.ogg" type="AudioStream" id=25]
 [ext_resource path="res://assets/sfx/spine1.wav" type="AudioStream" id=26]
-[ext_resource path="res://AnimationTree.gd" type="Script" id=27]
+[ext_resource path="res://StateMachine.gd" type="Script" id=27]
+[ext_resource path="res://character/states/Idle.gd" type="Script" id=28]
+[ext_resource path="res://character/states/Running.gd" type="Script" id=29]
+[ext_resource path="res://character/states/Jumping.gd" type="Script" id=30]
+[ext_resource path="res://character/states/Falling.gd" type="Script" id=31]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -417,7 +421,7 @@ states/Stagger/node = SubResource( 17 )
 states/Stagger/position = Vector2( 552.5, 79.375 )
 transitions = [ "Idle", "Running", SubResource( 18 ), "Running", "Idle", SubResource( 19 ), "Running", "Jumping", SubResource( 20 ), "Jumping", "Falling", SubResource( 21 ), "Idle", "Falling", SubResource( 22 ), "Falling", "Idle", SubResource( 23 ), "Idle", "Jumping", SubResource( 24 ), "Running", "Falling", SubResource( 25 ), "Idle", "Stagger", SubResource( 26 ), "Falling", "Stagger", SubResource( 27 ), "Jumping", "Stagger", SubResource( 28 ), "Running", "Stagger", SubResource( 29 ), "Stagger", "Idle", SubResource( 30 ) ]
 start_node = "Idle"
-graph_offset = Vector2( 52, 7 )
+graph_offset = Vector2( -5, -27 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=32]
 
@@ -435,13 +439,13 @@ color = Color( 0.462745, 0.486275, 0.996078, 1 )
 
 [node name="body" type="AnimatedSprite" parent="Graphics"]
 position = Vector2( 0, -130 )
-scale = Vector2( -0.505083, 0.5 )
+scale = Vector2( -0.503533, 0.5 )
 frames = SubResource( 1 )
 animation = "idle"
 
 [node name="Head" type="Node2D" parent="Graphics"]
 editor/display_folded = true
-position = Vector2( 0, -129.925 )
+position = Vector2( 0, -129.964 )
 scale = Vector2( -0.5, 0.5 )
 
 [node name="head" type="Sprite" parent="Graphics/Head"]
@@ -509,13 +513,26 @@ anims/Null = SubResource( 9 )
 anims/Running = SubResource( 10 )
 anims/Stagger = SubResource( 11 )
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="StateMachine" type="AnimationTree" parent="."]
 tree_root = SubResource( 31 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 32 )
 script = ExtResource( 27 )
 
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 28 )
+
+[node name="Running" type="Node" parent="StateMachine"]
+script = ExtResource( 29 )
+
+[node name="Jumping" type="Node" parent="StateMachine"]
+script = ExtResource( 30 )
+
+[node name="Falling" type="Node" parent="StateMachine"]
+script = ExtResource( 31 )
+
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 25 )
 bus = "SFX"
+[connection signal="transition" from="StateMachine" to="." method="_on_StateMachine_transition"]
