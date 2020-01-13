@@ -21,7 +21,7 @@ export var night_vision = false setget set_night_vision
 signal harmed
 signal recovered
 
-onready var state_machine = $AnimationTree.get('parameters/playback')
+onready var state_machine = $AnimationTree
 onready var last_safe_position : Vector2 = position
 
 
@@ -87,13 +87,19 @@ func refresh():
 		
 	if Engine.is_editor_hint():
 		get_parent().refresh()
-	
+
+const GRACE_TIME = 4.0
+onready var grace_time = GRACE_TIME
+
 func _process(delta):
 	if Engine.is_editor_hint():
 		return
 	
-	# use the animation state machine for gameplay purposes too
-	var current_state = state_machine.get_current_node()
+	if grace_time > 0:
+		grace_time-=delta
+		print(grace_time)
+	# use the animation state machine for gameplay nt_purposes too
+	var current_state = state_machine.get_current_state()
 	
 	# read controls
 	var x_dir = $Controls.x_dir if has_node('Controls') else 0
@@ -115,14 +121,19 @@ func _process(delta):
 	
 	### falling
 	if current_state != 'Falling' and velocity.y > 0:
+		grace_time = GRACE_TIME
 		state_machine.travel('Falling')
 		
 	# controllable height of jump
 	if current_state == 'Jumping' and jump_just_released:
 		state_machine.travel('Falling')
-		
+	
+	if current_state == "Falling" and grace_time > 0 and jump_just_requested:
+		state_machine.travel('Jumping')
+
 	### landing
 	if current_state == 'Falling' and is_on_floor():
+		grace_time = GRACE_TIME
 		state_machine.travel('Idle')
 		
 		

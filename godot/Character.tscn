@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Character.gd" type="Script" id=1]
 [ext_resource path="res://assets/light.png" type="Texture" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://assets/sfx/one_poc2.ogg" type="AudioStream" id=24]
 [ext_resource path="res://assets/sfx/one_poc.ogg" type="AudioStream" id=25]
 [ext_resource path="res://assets/sfx/spine1.wav" type="AudioStream" id=26]
+[ext_resource path="res://AnimationTree.gd" type="Script" id=27]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -434,12 +435,13 @@ color = Color( 0.462745, 0.486275, 0.996078, 1 )
 
 [node name="body" type="AnimatedSprite" parent="Graphics"]
 position = Vector2( 0, -130 )
-scale = Vector2( -0.52723, 0.5 )
+scale = Vector2( -0.505083, 0.5 )
 frames = SubResource( 1 )
 animation = "idle"
 
 [node name="Head" type="Node2D" parent="Graphics"]
-position = Vector2( 0, -129.001 )
+editor/display_folded = true
+position = Vector2( 0, -129.925 )
 scale = Vector2( -0.5, 0.5 )
 
 [node name="head" type="Sprite" parent="Graphics/Head"]
@@ -452,7 +454,7 @@ texture = ExtResource( 13 )
 
 [node name="eyes" type="AnimatedSprite" parent="Graphics/Head"]
 frames = SubResource( 2 )
-frame = 7
+frame = 10
 playing = true
 
 [node name="eyes_pain" type="Sprite" parent="Graphics/Head"]
@@ -488,7 +490,7 @@ flip_h = true
 [node name="eyes_spider" type="AnimatedSprite" parent="Graphics/Head"]
 visible = false
 frames = SubResource( 3 )
-frame = 7
+frame = 10
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -512,6 +514,7 @@ tree_root = SubResource( 31 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 32 )
+script = ExtResource( 27 )
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 25 )
