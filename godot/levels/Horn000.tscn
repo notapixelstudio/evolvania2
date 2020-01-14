@@ -76,6 +76,7 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="Solid" type="TileMap" parent="." index="4"]
+visible = false
 modulate = Color( 1, 1, 1, 0.454902 )
 tile_set = SubResource( 3 )
 cell_size = Vector2( 40, 40 )
