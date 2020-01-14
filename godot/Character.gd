@@ -9,6 +9,8 @@ var jump_starting_speed : float = 1600.0
 var ascending_gravity_bonus : float = 5600.0
 var gravity : float = 8800.0
 var max_fall_speed : float = 2800.0
+var x_inertia : float = 0
+var x_inertia_decel : float = 4.0
 
 enum diets {NONE, HERBIVORE, CARNIVORE}
 
@@ -98,6 +100,13 @@ func _process(delta):
 	
 func apply_gravity(delta):
 	velocity.y = min(velocity.y + gravity * delta, max_fall_speed)
+	
+func apply_x_inertia(delta):
+	if abs(x_inertia) > 0:
+		velocity.x += x_inertia
+		x_inertia -= x_inertia_decel * delta
+	else:
+		x_inertia = 0.0
 	
 func update_horizontal_movement(speed):
 	velocity.x = speed * controls.x_dir

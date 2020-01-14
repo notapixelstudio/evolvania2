@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Character.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/KELMSCOT.ttf" type="DynamicFontData" id=2]
@@ -34,7 +34,6 @@
 [ext_resource path="res://character/states/Falling.gd" type="Script" id=32]
 [ext_resource path="res://character/states/Stagger.gd" type="Script" id=33]
 [ext_resource path="res://character/states/WallSliding.gd" type="Script" id=34]
-[ext_resource path="res://character/states/WallJumping.gd" type="Script" id=35]
 
 [sub_resource type="DynamicFont" id=1]
 size = 38
@@ -380,22 +379,7 @@ tracks/4/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=40]
-resource_name = "WallJumping"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Graphics/body:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ "wall_jumping", "wall_jumping" ]
-}
-
-[sub_resource type="Animation" id=34]
+[sub_resource type="Animation" id=13]
 resource_name = "WallSliding"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Graphics/body:animation")
@@ -410,33 +394,26 @@ tracks/0/keys = {
 "values": [ "wall_sliding", "wall_sliding" ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Falling"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Jumping"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "Null"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "Running"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=19]
 animation = "Stagger"
 
-[sub_resource type="AnimationNodeAnimation" id=41]
-animation = "WallJumping"
-
-[sub_resource type="AnimationNodeAnimation" id=35]
+[sub_resource type="AnimationNodeAnimation" id=20]
 animation = "WallSliding"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=19]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
@@ -459,39 +436,39 @@ animation = "WallSliding"
 [sub_resource type="AnimationNodeStateMachineTransition" id=30]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=38]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=42]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=43]
-
-[sub_resource type="AnimationNodeStateMachine" id=32]
-states/Falling/node = SubResource( 13 )
+[sub_resource type="AnimationNodeStateMachine" id=36]
+states/Falling/node = SubResource( 14 )
 states/Falling/position = Vector2( 227.75, 250 )
-states/Idle/node = SubResource( 14 )
+states/Idle/node = SubResource( 15 )
 states/Idle/position = Vector2( 129, 80 )
-states/Jumping/node = SubResource( 15 )
+states/Jumping/node = SubResource( 16 )
 states/Jumping/position = Vector2( 455, 249 )
-states/Null/node = SubResource( 16 )
+states/Null/node = SubResource( 17 )
 states/Null/position = Vector2( 35, -51.5 )
-states/Running/node = SubResource( 17 )
+states/Running/node = SubResource( 18 )
 states/Running/position = Vector2( 332, -33 )
-states/Stagger/node = SubResource( 18 )
+states/Stagger/node = SubResource( 19 )
 states/Stagger/position = Vector2( 552.5, 79.375 )
-states/WallJumping/node = SubResource( 41 )
-states/WallJumping/position = Vector2( 454.625, 349.266 )
-states/WallSliding/node = SubResource( 35 )
+states/WallSliding/node = SubResource( 20 )
 states/WallSliding/position = Vector2( 227.75, 350 )
-transitions = [ "Idle", "Running", SubResource( 19 ), "Running", "Idle", SubResource( 20 ), "Running", "Jumping", SubResource( 21 ), "Jumping", "Falling", SubResource( 22 ), "Idle", "Falling", SubResource( 23 ), "Falling", "Idle", SubResource( 24 ), "Idle", "Jumping", SubResource( 25 ), "Running", "Falling", SubResource( 26 ), "Idle", "Stagger", SubResource( 27 ), "Falling", "Stagger", SubResource( 28 ), "Jumping", "Stagger", SubResource( 29 ), "Running", "Stagger", SubResource( 30 ), "Stagger", "Idle", SubResource( 31 ), "Falling", "WallSliding", SubResource( 37 ), "WallSliding", "Falling", SubResource( 38 ), "WallSliding", "WallJumping", SubResource( 42 ), "WallJumping", "Falling", SubResource( 43 ) ]
+transitions = [ "Idle", "Running", SubResource( 21 ), "Running", "Idle", SubResource( 22 ), "Running", "Jumping", SubResource( 23 ), "Jumping", "Falling", SubResource( 24 ), "Idle", "Falling", SubResource( 25 ), "Falling", "Idle", SubResource( 26 ), "Idle", "Jumping", SubResource( 27 ), "Running", "Falling", SubResource( 28 ), "Idle", "Stagger", SubResource( 29 ), "Falling", "Stagger", SubResource( 30 ), "Jumping", "Stagger", SubResource( 31 ), "Running", "Stagger", SubResource( 32 ), "Stagger", "Idle", SubResource( 33 ), "Falling", "WallSliding", SubResource( 34 ), "WallSliding", "Falling", SubResource( 35 ), "WallSliding", "Jumping", SubResource( 38 ) ]
 start_node = "Idle"
 graph_offset = Vector2( 126, 195.066 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=33]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=37]
 
 [node name="Character" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -517,12 +494,12 @@ color = Color( 0.462745, 0.486275, 0.996078, 1 )
 
 [node name="body" type="AnimatedSprite" parent="Graphics"]
 position = Vector2( 0, -130 )
-scale = Vector2( -0.504646, 0.5 )
+scale = Vector2( -0.527418, 0.5 )
 frames = SubResource( 2 )
 animation = "idle"
 
 [node name="Head" type="Node2D" parent="Graphics"]
-position = Vector2( 0, -129.937 )
+position = Vector2( 0, -129.049 )
 scale = Vector2( -0.5, 0.5 )
 
 [node name="head" type="Sprite" parent="Graphics/Head"]
@@ -535,7 +512,7 @@ texture = ExtResource( 14 )
 
 [node name="eyes" type="AnimatedSprite" parent="Graphics/Head"]
 frames = SubResource( 3 )
-frame = 13
+frame = 14
 playing = true
 
 [node name="eyes_pain" type="Sprite" parent="Graphics/Head"]
@@ -571,7 +548,7 @@ flip_h = true
 [node name="eyes_spider" type="AnimatedSprite" parent="Graphics/Head"]
 visible = false
 frames = SubResource( 4 )
-frame = 13
+frame = 14
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -589,14 +566,13 @@ anims/Jumping = SubResource( 9 )
 anims/Null = SubResource( 10 )
 anims/Running = SubResource( 11 )
 anims/Stagger = SubResource( 12 )
-anims/WallJumping = SubResource( 40 )
-anims/WallSliding = SubResource( 34 )
+anims/WallSliding = SubResource( 13 )
 
 [node name="StateMachine" type="AnimationTree" parent="."]
-tree_root = SubResource( 32 )
+tree_root = SubResource( 36 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 33 )
+parameters/playback = SubResource( 37 )
 script = ExtResource( 28 )
 
 [node name="Idle" type="Node" parent="StateMachine"]
@@ -616,9 +592,6 @@ script = ExtResource( 33 )
 
 [node name="WallSliding" type="Node" parent="StateMachine"]
 script = ExtResource( 34 )
-
-[node name="WallJumping" type="Node" parent="StateMachine"]
-script = ExtResource( 35 )
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 26 )

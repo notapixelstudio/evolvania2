@@ -15,14 +15,7 @@ func update(delta):
 	var state = get_current_state()
 	if not state:
 		return
-		
-	# update current state
-	var state_node = get_node(state)
-	if not state_node:
-		return
-		
-	state_node.update(delta)
-	
+			
 	# transition
 	if state != old_state:
 		if old_state:
@@ -38,3 +31,10 @@ func update(delta):
 		
 		old_state = state
 		
+	# update current state
+	var state_node = get_node(state)
+	if not state_node:
+		return
+		
+	state_node.update(delta)
+	
