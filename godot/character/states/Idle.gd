@@ -6,6 +6,7 @@ func enter(from):
 	
 func update(delta):
 	if this.controls.jump_just_requested:
+		this.velocity.y = -this.jump_starting_speed
 		state_machine.travel('Jumping')
 	elif this.velocity.y > 0:
 		state_machine.travel('Falling')

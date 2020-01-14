@@ -3,10 +3,10 @@ extends KinematicBody2D
 
 class_name Character
 
-var x_speed : float = 700.0
-var air_x_speed : float = 700.0
-var jump_starting_speed : float = 1300.0
-var ascending_gravity_bonus : float = 6400.0
+var x_speed : float = 850.0
+var air_x_speed : float = 850.0
+var jump_starting_speed : float = 1600.0
+var ascending_gravity_bonus : float = 5600.0
 var gravity : float = 8800.0
 var max_fall_speed : float = 2800.0
 
@@ -106,4 +106,14 @@ func update_horizontal_movement(speed):
 	
 func harm():
 	state_machine.travel('Stagger')
+	
+var debug_states = []
+func _on_StateMachine_transition(old, new):
+	debug_states.append(new)
+	if len(debug_states) > 6:
+		debug_states.pop_front()
+		
+	$StateDebug.text = ''
+	for state in debug_states:
+		$StateDebug.text += '\n' + state
 	

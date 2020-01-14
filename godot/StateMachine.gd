@@ -3,6 +3,8 @@ extends AnimationTree
 onready var state_machine = get('parameters/playback')
 var old_state = null
 
+signal transition
+
 func get_current_state():
 	return state_machine.get_current_node()
 	
@@ -32,5 +34,7 @@ func update(delta):
 		if new_node:
 			new_node.enter(old_state)
 			
+		emit_signal("transition", old_state, state)
+		
 		old_state = state
 		

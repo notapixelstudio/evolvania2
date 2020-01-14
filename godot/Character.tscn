@@ -1,75 +1,94 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Character.gd" type="Script" id=1]
-[ext_resource path="res://assets/light.png" type="Texture" id=2]
-[ext_resource path="res://assets/character/body.png" type="Texture" id=3]
-[ext_resource path="res://assets/character/walk_0000.png" type="Texture" id=4]
-[ext_resource path="res://assets/character/walk_0001.png" type="Texture" id=5]
-[ext_resource path="res://assets/character/walk_0002.png" type="Texture" id=6]
-[ext_resource path="res://assets/character/walk_0003.png" type="Texture" id=7]
-[ext_resource path="res://assets/character/walk_0004.png" type="Texture" id=8]
-[ext_resource path="res://assets/character/walk_0005.png" type="Texture" id=9]
-[ext_resource path="res://assets/character/walk_0006.png" type="Texture" id=10]
-[ext_resource path="res://assets/character/walk_0007.png" type="Texture" id=11]
-[ext_resource path="res://assets/character/head.png" type="Texture" id=12]
-[ext_resource path="res://assets/character/head_pigmy.png" type="Texture" id=13]
-[ext_resource path="res://assets/character/eyes.png" type="Texture" id=14]
-[ext_resource path="res://assets/character/eyes_shut.png" type="Texture" id=15]
-[ext_resource path="res://assets/character/eyes_pain.png" type="Texture" id=16]
-[ext_resource path="res://assets/character/mouth_basic.png" type="Texture" id=17]
-[ext_resource path="res://assets/character/mouth_herbivore.png" type="Texture" id=18]
-[ext_resource path="res://assets/character/mouth_carnivore.png" type="Texture" id=19]
-[ext_resource path="res://assets/character/ears.png" type="Texture" id=20]
-[ext_resource path="res://assets/character/horn.png" type="Texture" id=21]
-[ext_resource path="res://assets/character/eyes_spider.png" type="Texture" id=22]
-[ext_resource path="res://assets/character/eyes_spider_shut.png" type="Texture" id=23]
-[ext_resource path="res://assets/sfx/one_poc2.ogg" type="AudioStream" id=24]
-[ext_resource path="res://assets/sfx/one_poc.ogg" type="AudioStream" id=25]
-[ext_resource path="res://assets/sfx/spine1.wav" type="AudioStream" id=26]
-[ext_resource path="res://StateMachine.gd" type="Script" id=27]
-[ext_resource path="res://character/states/Idle.gd" type="Script" id=28]
-[ext_resource path="res://character/states/Running.gd" type="Script" id=29]
-[ext_resource path="res://character/states/Jumping.gd" type="Script" id=30]
-[ext_resource path="res://character/states/Falling.gd" type="Script" id=31]
-[ext_resource path="res://character/states/Stagger.gd" type="Script" id=32]
+[ext_resource path="res://assets/fonts/KELMSCOT.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/light.png" type="Texture" id=3]
+[ext_resource path="res://assets/character/body.png" type="Texture" id=4]
+[ext_resource path="res://assets/character/walk_0000.png" type="Texture" id=5]
+[ext_resource path="res://assets/character/walk_0001.png" type="Texture" id=6]
+[ext_resource path="res://assets/character/walk_0002.png" type="Texture" id=7]
+[ext_resource path="res://assets/character/walk_0003.png" type="Texture" id=8]
+[ext_resource path="res://assets/character/walk_0004.png" type="Texture" id=9]
+[ext_resource path="res://assets/character/walk_0005.png" type="Texture" id=10]
+[ext_resource path="res://assets/character/walk_0006.png" type="Texture" id=11]
+[ext_resource path="res://assets/character/walk_0007.png" type="Texture" id=12]
+[ext_resource path="res://assets/character/head.png" type="Texture" id=13]
+[ext_resource path="res://assets/character/head_pigmy.png" type="Texture" id=14]
+[ext_resource path="res://assets/character/eyes.png" type="Texture" id=15]
+[ext_resource path="res://assets/character/eyes_shut.png" type="Texture" id=16]
+[ext_resource path="res://assets/character/eyes_pain.png" type="Texture" id=17]
+[ext_resource path="res://assets/character/mouth_basic.png" type="Texture" id=18]
+[ext_resource path="res://assets/character/mouth_herbivore.png" type="Texture" id=19]
+[ext_resource path="res://assets/character/mouth_carnivore.png" type="Texture" id=20]
+[ext_resource path="res://assets/character/ears.png" type="Texture" id=21]
+[ext_resource path="res://assets/character/horn.png" type="Texture" id=22]
+[ext_resource path="res://assets/character/eyes_spider.png" type="Texture" id=23]
+[ext_resource path="res://assets/character/eyes_spider_shut.png" type="Texture" id=24]
+[ext_resource path="res://assets/sfx/one_poc2.ogg" type="AudioStream" id=25]
+[ext_resource path="res://assets/sfx/one_poc.ogg" type="AudioStream" id=26]
+[ext_resource path="res://assets/sfx/spine1.wav" type="AudioStream" id=27]
+[ext_resource path="res://StateMachine.gd" type="Script" id=28]
+[ext_resource path="res://character/states/Idle.gd" type="Script" id=29]
+[ext_resource path="res://character/states/Running.gd" type="Script" id=30]
+[ext_resource path="res://character/states/Jumping.gd" type="Script" id=31]
+[ext_resource path="res://character/states/Falling.gd" type="Script" id=32]
+[ext_resource path="res://character/states/Stagger.gd" type="Script" id=33]
+[ext_resource path="res://character/states/WallSliding.gd" type="Script" id=34]
+[ext_resource path="res://character/states/WallJumping.gd" type="Script" id=35]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="DynamicFont" id=1]
+size = 38
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "running",
 "speed": 10.0
-} ]
-
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ) ],
+}, {
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "default",
-"speed": 3.0
+"name": "wall_sliding",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "wall_jumping",
+"speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "default",
 "speed": 3.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 38, 40 )
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 38.0
 height = 40.0
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
@@ -121,7 +140,7 @@ tracks/3/keys = {
 "values": [ 0.0, 7.0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -173,7 +192,7 @@ tracks/3/keys = {
 "values": [ 0.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Graphics/Head:position")
@@ -224,9 +243,9 @@ tracks/3/keys = {
 "values": [ 15.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=9]
-
 [sub_resource type="Animation" id=10]
+
+[sub_resource type="Animation" id=11]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -287,16 +306,16 @@ tracks/4/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 24 )
+"stream": ExtResource( 25 )
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 25 )
+"stream": ExtResource( 26 )
 } ],
 "times": PoolRealArray( 0, 0.4 )
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Graphics:modulate")
@@ -332,7 +351,7 @@ tracks/2/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 26 )
+"stream": ExtResource( 27 )
 } ],
 "times": PoolRealArray( 0 )
 }
@@ -361,25 +380,59 @@ tracks/4/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=12]
-animation = "Falling"
+[sub_resource type="Animation" id=40]
+resource_name = "WallJumping"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Graphics/body:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "wall_jumping", "wall_jumping" ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "WallSliding"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Graphics/body:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "wall_sliding", "wall_sliding" ]
+}
 
 [sub_resource type="AnimationNodeAnimation" id=13]
-animation = "Idle"
+animation = "Falling"
 
 [sub_resource type="AnimationNodeAnimation" id=14]
-animation = "Jumping"
+animation = "Idle"
 
 [sub_resource type="AnimationNodeAnimation" id=15]
-animation = "Null"
+animation = "Jumping"
 
 [sub_resource type="AnimationNodeAnimation" id=16]
-animation = "Running"
+animation = "Null"
 
 [sub_resource type="AnimationNodeAnimation" id=17]
+animation = "Running"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "Stagger"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+[sub_resource type="AnimationNodeAnimation" id=41]
+animation = "WallJumping"
+
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "WallSliding"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
@@ -404,30 +457,54 @@ animation = "Stagger"
 [sub_resource type="AnimationNodeStateMachineTransition" id=29]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=31]
-states/Falling/node = SubResource( 12 )
-states/Falling/position = Vector2( 227.75, 250 )
-states/Idle/node = SubResource( 13 )
-states/Idle/position = Vector2( 129, 80 )
-states/Jumping/node = SubResource( 14 )
-states/Jumping/position = Vector2( 455, 249 )
-states/Null/node = SubResource( 15 )
-states/Null/position = Vector2( 35, -51.5 )
-states/Running/node = SubResource( 16 )
-states/Running/position = Vector2( 332, -33 )
-states/Stagger/node = SubResource( 17 )
-states/Stagger/position = Vector2( 552.5, 79.375 )
-transitions = [ "Idle", "Running", SubResource( 18 ), "Running", "Idle", SubResource( 19 ), "Running", "Jumping", SubResource( 20 ), "Jumping", "Falling", SubResource( 21 ), "Idle", "Falling", SubResource( 22 ), "Falling", "Idle", SubResource( 23 ), "Idle", "Jumping", SubResource( 24 ), "Running", "Falling", SubResource( 25 ), "Idle", "Stagger", SubResource( 26 ), "Falling", "Stagger", SubResource( 27 ), "Jumping", "Stagger", SubResource( 28 ), "Running", "Stagger", SubResource( 29 ), "Stagger", "Idle", SubResource( 30 ) ]
-start_node = "Idle"
-graph_offset = Vector2( -5, -27 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+
+[sub_resource type="AnimationNodeStateMachine" id=32]
+states/Falling/node = SubResource( 13 )
+states/Falling/position = Vector2( 227.75, 250 )
+states/Idle/node = SubResource( 14 )
+states/Idle/position = Vector2( 129, 80 )
+states/Jumping/node = SubResource( 15 )
+states/Jumping/position = Vector2( 455, 249 )
+states/Null/node = SubResource( 16 )
+states/Null/position = Vector2( 35, -51.5 )
+states/Running/node = SubResource( 17 )
+states/Running/position = Vector2( 332, -33 )
+states/Stagger/node = SubResource( 18 )
+states/Stagger/position = Vector2( 552.5, 79.375 )
+states/WallJumping/node = SubResource( 41 )
+states/WallJumping/position = Vector2( 454.625, 349.266 )
+states/WallSliding/node = SubResource( 35 )
+states/WallSliding/position = Vector2( 227.75, 350 )
+transitions = [ "Idle", "Running", SubResource( 19 ), "Running", "Idle", SubResource( 20 ), "Running", "Jumping", SubResource( 21 ), "Jumping", "Falling", SubResource( 22 ), "Idle", "Falling", SubResource( 23 ), "Falling", "Idle", SubResource( 24 ), "Idle", "Jumping", SubResource( 25 ), "Running", "Falling", SubResource( 26 ), "Idle", "Stagger", SubResource( 27 ), "Falling", "Stagger", SubResource( 28 ), "Jumping", "Stagger", SubResource( 29 ), "Running", "Stagger", SubResource( 30 ), "Stagger", "Idle", SubResource( 31 ), "Falling", "WallSliding", SubResource( 37 ), "WallSliding", "Falling", SubResource( 38 ), "WallSliding", "WallJumping", SubResource( 42 ), "WallJumping", "Falling", SubResource( 43 ) ]
+start_node = "Idle"
+graph_offset = Vector2( 126, 195.066 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=33]
 
 [node name="Character" type="KinematicBody2D"]
 script = ExtResource( 1 )
+
+[node name="StateDebug" type="Label" parent="."]
+margin_left = -200.0
+margin_top = -678.0
+margin_right = 206.0
+margin_bottom = -233.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 2
+max_lines_visible = 7
 
 [node name="Graphics" type="Node2D" parent="."]
 
@@ -435,107 +512,115 @@ script = ExtResource( 1 )
 visible = false
 position = Vector2( 8, -134 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 color = Color( 0.462745, 0.486275, 0.996078, 1 )
 
 [node name="body" type="AnimatedSprite" parent="Graphics"]
 position = Vector2( 0, -130 )
-scale = Vector2( -0.525644, 0.5 )
-frames = SubResource( 1 )
+scale = Vector2( -0.504646, 0.5 )
+frames = SubResource( 2 )
 animation = "idle"
 
 [node name="Head" type="Node2D" parent="Graphics"]
-editor/display_folded = true
-position = Vector2( 0, -129.089 )
+position = Vector2( 0, -129.937 )
 scale = Vector2( -0.5, 0.5 )
 
 [node name="head" type="Sprite" parent="Graphics/Head"]
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="head_pigmy" type="Sprite" parent="Graphics/Head"]
 visible = false
 position = Vector2( -5, -6 )
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 
 [node name="eyes" type="AnimatedSprite" parent="Graphics/Head"]
-frames = SubResource( 2 )
-frame = 4
+frames = SubResource( 3 )
+frame = 13
 playing = true
 
 [node name="eyes_pain" type="Sprite" parent="Graphics/Head"]
 visible = false
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 
 [node name="mouth" type="Sprite" parent="Graphics/Head"]
-texture = ExtResource( 17 )
+texture = ExtResource( 18 )
 
 [node name="mouth_herbivore" type="Sprite" parent="Graphics/Head"]
 visible = false
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 
 [node name="mouth_carnivore" type="Sprite" parent="Graphics/Head"]
 visible = false
-texture = ExtResource( 19 )
+texture = ExtResource( 20 )
 
 [node name="Top" type="Node2D" parent="Graphics/Head"]
 editor/display_folded = true
 
 [node name="ears" type="Sprite" parent="Graphics/Head/Top"]
 visible = false
-texture = ExtResource( 20 )
+texture = ExtResource( 21 )
 
 [node name="horn" type="Sprite" parent="Graphics/Head/Top"]
 visible = false
 position = Vector2( 0, -0.518036 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 flip_h = true
 
 [node name="eyes_spider" type="AnimatedSprite" parent="Graphics/Head"]
 visible = false
-frames = SubResource( 3 )
-frame = 4
+frames = SubResource( 4 )
+frame = 13
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -40 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -85 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Falling = SubResource( 6 )
-anims/Idle = SubResource( 7 )
-anims/Jumping = SubResource( 8 )
-anims/Null = SubResource( 9 )
-anims/Running = SubResource( 10 )
-anims/Stagger = SubResource( 11 )
+anims/Falling = SubResource( 7 )
+anims/Idle = SubResource( 8 )
+anims/Jumping = SubResource( 9 )
+anims/Null = SubResource( 10 )
+anims/Running = SubResource( 11 )
+anims/Stagger = SubResource( 12 )
+anims/WallJumping = SubResource( 40 )
+anims/WallSliding = SubResource( 34 )
 
 [node name="StateMachine" type="AnimationTree" parent="."]
-tree_root = SubResource( 31 )
+tree_root = SubResource( 32 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 32 )
-script = ExtResource( 27 )
-
-[node name="Idle" type="Node" parent="StateMachine"]
+parameters/playback = SubResource( 33 )
 script = ExtResource( 28 )
 
-[node name="Running" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 29 )
 
-[node name="Jumping" type="Node" parent="StateMachine"]
+[node name="Running" type="Node" parent="StateMachine"]
 script = ExtResource( 30 )
 
-[node name="Falling" type="Node" parent="StateMachine"]
+[node name="Jumping" type="Node" parent="StateMachine"]
 script = ExtResource( 31 )
 
-[node name="Stagger" type="Node" parent="StateMachine"]
+[node name="Falling" type="Node" parent="StateMachine"]
 script = ExtResource( 32 )
 
+[node name="Stagger" type="Node" parent="StateMachine"]
+script = ExtResource( 33 )
+
+[node name="WallSliding" type="Node" parent="StateMachine"]
+script = ExtResource( 34 )
+
+[node name="WallJumping" type="Node" parent="StateMachine"]
+script = ExtResource( 35 )
+
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 25 )
+stream = ExtResource( 26 )
 bus = "SFX"
+[connection signal="transition" from="StateMachine" to="." method="_on_StateMachine_transition"]

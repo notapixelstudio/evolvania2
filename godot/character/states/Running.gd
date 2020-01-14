@@ -1,10 +1,10 @@
 extends State
 
 func update(delta):
-	if this.controls.jump_just_requested:
-		state_machine.travel('Jumping')
-	elif this.velocity.y > 0:
+	if this.velocity.y > 0:
 		state_machine.travel('Falling')
+	elif this.controls.jump_just_requested:
+		state_machine.travel('Jumping')
 	elif this.controls.x_dir == 0:
 		state_machine.travel('Idle')
 	
