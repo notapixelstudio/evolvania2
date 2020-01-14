@@ -3,11 +3,12 @@ extends KinematicBody2D
 
 class_name Character
 
-var x_speed : float = 800.0
-var air_x_speed : float = 800.0
-var jump_starting_speed : float = 1400.0
-var ascending_gravity_bonus : float = 6200.0
+var x_speed : float = 700.0
+var air_x_speed : float = 700.0
+var jump_starting_speed : float = 1300.0
+var ascending_gravity_bonus : float = 6400.0
 var gravity : float = 8800.0
+var max_fall_speed : float = 2800.0
 
 enum diets {NONE, HERBIVORE, CARNIVORE}
 
@@ -96,7 +97,7 @@ func _process(delta):
 	velocity = move_and_slide(velocity, Vector2(0,-1)) # second arg is the floor normal, needed by is_on_floor()
 	
 func apply_gravity(delta):
-	velocity += Vector2(0, gravity) * delta
+	velocity.y = min(velocity.y + gravity * delta, max_fall_speed)
 	
 func update_horizontal_movement(speed):
 	velocity.x = speed * controls.x_dir
