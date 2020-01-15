@@ -46,13 +46,6 @@ extents = Vector2( 160, 400 )
 
 [node name="Level" instance=ExtResource( 1 )]
 
-[node name="HUD" parent="." index="0"]
-editor/display_folded = true
-
-[node name="LifeCounter" parent="HUD" index="0"]
-life = 3
-max_life = 3
-
 [node name="old_book_texture" type="Sprite" parent="." index="1"]
 position = Vector2( 1280, -560 )
 rotation = 1.5708
@@ -167,6 +160,7 @@ position = Vector2( -1320, 480 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 16 )
 energy = 0.5
+
 
 [editable path="fig002"]
 
