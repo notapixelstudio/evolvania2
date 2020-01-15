@@ -9,6 +9,26 @@
 [node name="Platform" parent="." instance=ExtResource( 1 )]
 position = Vector2( 320, 560 )
 
+[node name="Platform17" parent="." instance=ExtResource( 1 )]
+position = Vector2( -320, 800 )
+scale = Vector2( 1, 10 )
+
+[node name="Platform18" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2320, 520 )
+scale = Vector2( 1, 10 )
+
+[node name="Platform19" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3160, 320 )
+scale = Vector2( 1, 20 )
+
+[node name="Platform8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 40, 1560 )
+scale = Vector2( 10, 1 )
+
+[node name="Platform20" parent="." instance=ExtResource( 1 )]
+position = Vector2( 960, 1960 )
+scale = Vector2( 10, 1 )
+
 [node name="Platform2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 80, 400 )
 

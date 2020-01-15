@@ -3,14 +3,12 @@ extends KinematicBody2D
 
 class_name Character
 
-var x_speed : float = 850.0
-var air_x_speed : float = 850.0
+var x_speed : float = 1000.0
+var air_x_speed : float = 1000.0
 var jump_starting_speed : float = 1600.0
-var ascending_gravity_bonus : float = 5600.0
-var gravity : float = 8800.0
+var ascending_gravity_bonus : float = 5800.0
+var gravity : float = 9000.0
 var max_fall_speed : float = 2800.0
-var x_inertia : float = 0
-var x_inertia_decel : float = 4.0
 
 enum diets {NONE, HERBIVORE, CARNIVORE}
 
@@ -30,7 +28,7 @@ onready var last_safe_position : Vector2 = position
 
 var old_state = null
 var velocity : Vector2 = Vector2(0,0)
-
+var last_wall : int = 0
 
 func _ready():
 	$Graphics/Head/eyes.playing = true
@@ -97,24 +95,30 @@ func _process(delta):
 		
 	state_machine.update(delta)
 	velocity = move_and_slide(velocity, Vector2(0,-1)) # second arg is the floor normal, needed by is_on_floor()
+	last_wall = get_which_wall_collided()
 	
 func apply_gravity(delta):
 	velocity.y = min(velocity.y + gravity * delta, max_fall_speed)
 	
-func apply_x_inertia(delta):
-	if abs(x_inertia) > 0:
-		velocity.x += x_inertia
-		x_inertia -= x_inertia_decel * delta
-	else:
-		x_inertia = 0.0
-	
 func update_horizontal_movement(speed):
 	velocity.x = speed * controls.x_dir
+	update_flip()
+	
+func update_flip():
 	if controls.x_dir != 0:
 		$Graphics.scale.x = controls.x_dir
 	
 func harm():
 	state_machine.travel('Stagger')
+	
+func get_which_wall_collided():
+	for i in range(get_slide_count()):
+		var collision = get_slide_collision(i)
+		if collision.normal.x > 0:
+			return 1
+		elif collision.normal.x < 0:
+			return -1
+	return last_wall
 	
 var debug_states = []
 func _on_StateMachine_transition(old, new):

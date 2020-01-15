@@ -1,25 +1,32 @@
 extends State
 
-const wall_jump_vector = Vector2(3000,-2000)
+const BACK_DURATION : float = 0.2
+var back_duration : float
+
+const wall_jump_y_starting_speed = 1200.0
+const wall_jump_x_starting_speed = 1350.0
 
 func enter(from):
-	this.velocity = wall_jump_vector
-	this.controls.x_dir = 0
-	this.controls.set_process(false)
+	back_duration = BACK_DURATION
 	
+	this.velocity.y = -wall_jump_y_starting_speed
+	if this.last_wall == 1:
+		this.velocity.x = wall_jump_x_starting_speed
+	elif this.last_wall == -1:
+		this.velocity.x = -wall_jump_x_starting_speed
+		
 func update(delta):
-	# controllable height of jump
+	if this.last_wall != this.controls.x_dir:
+		back_duration -= delta
+	
 	this.velocity.y -= this.ascending_gravity_bonus * delta
 	
-	if this.velocity.y > 0 :
+	if this.last_wall == this.controls.x_dir and this.controls.jump_just_released:
 		state_machine.travel('Falling')
-	elif this.controls.jump_just_released:
+	elif back_duration < 0 or this.velocity.y > 0:
 		state_machine.travel('Falling')
 		
-	# can move horizontally while ascending
-	#this.update_horizontal_movement(this.air_x_speed)
-	this.apply_gravity(delta) # ascend against gravity
-	
-func exit(to):
-	this.controls.set_process(true)
+	# cannot move horizontally while wall jumping
+	this.update_flip()
+	this.apply_gravity(delta)
 	

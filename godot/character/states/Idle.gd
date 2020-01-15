@@ -5,7 +5,7 @@ func enter(from):
 	this.velocity = Vector2(0,0)
 	
 func update(delta):
-	if this.controls.jump_just_requested:
+	if this.controls.grace_jump_down:
 		state_machine.travel('Jumping')
 	elif this.velocity.y > 0:
 		state_machine.travel('Falling')

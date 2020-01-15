@@ -1,16 +1,13 @@
 extends State
 
-const wall_jump_x_starting_speed = 600.0
 const wall_jump_y_starting_speed = 1000.0
 
 func enter(from):
 	if from == 'Idle' or from == 'Running':
 		# starting upwards velocity
 		this.velocity.y = -this.jump_starting_speed
-		this.x_inertia = 0.0
 	elif from == 'WallSliding':
 		this.velocity.y = -wall_jump_y_starting_speed
-		this.x_inertia = wall_jump_x_starting_speed
 	
 func update(delta):
 	# controllable height of jump
@@ -24,5 +21,4 @@ func update(delta):
 	# can move horizontally while ascending
 	this.update_horizontal_movement(this.air_x_speed)
 	this.apply_gravity(delta) # ascend against gravity
-	this.apply_x_inertia(delta)
 	
