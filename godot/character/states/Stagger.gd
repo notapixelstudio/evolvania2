@@ -7,5 +7,5 @@ func enter(from):
 	
 func exit(to):
 	this.emit_signal('recovered')
-	this.set_position(this.last_safe_position)
+	this.set_position(this.safe_position)
 	

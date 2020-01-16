@@ -12,13 +12,21 @@ var grace_jump_timeout : float = GRACE_JUMP_TIMEOUT
 var jump_just_requested : bool = false
 var jump_just_released : bool = false
 
+var spin_just_requested : bool = false
+var spin_just_released : bool = false
+
+
 var x_dir : int = 0
 
 func _process(delta):
 	x_dir = int(right_down)-int(left_down)
 	
-	jump_just_requested = Input.is_action_just_pressed('ui_accept')
-	jump_just_released = Input.is_action_just_released('ui_accept')
+	jump_just_requested = Input.is_action_just_pressed('jump')
+	jump_just_released = Input.is_action_just_released('jump')
+	
+	spin_just_requested = Input.is_action_just_pressed('spin')
+	spin_just_released = Input.is_action_just_released('spin')
+	
 	
 	if grace_jump_timeout > 0:
 		grace_jump_timeout -= delta
@@ -39,13 +47,13 @@ func _input(event):
 		left_down = false
 		
 		
-	if event.is_action_pressed('ui_accept'):
+	if event.is_action_pressed('jump'):
 		jump_down = true
 		if not grace_jump_down:
 			grace_jump_down = true
 			grace_jump_timeout = GRACE_JUMP_TIMEOUT
 		
-	if event.is_action_released('ui_accept'):
+	if event.is_action_released('jump'):
 		jump_down = false
 		grace_jump_down = false
 		

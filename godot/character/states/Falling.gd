@@ -1,7 +1,9 @@
 extends State
 
 func update(delta):
-	if this.is_on_floor():
+	if this.controls.spin_just_requested:
+		state_machine.travel('Spin')
+	elif this.is_on_floor():
 		# landing
 		if this.controls.x_dir == 0:
 			state_machine.travel('Idle')

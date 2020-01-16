@@ -13,7 +13,9 @@ func update(delta):
 	if this.velocity.y <= 0:
 		coyote_time = COYOTE_TIME
 	
-	if this.velocity.y > 0 and coyote_time <= 0:
+	if this.controls.spin_just_requested:
+		state_machine.travel('Spin')
+	elif this.velocity.y > 0 and coyote_time <= 0:
 		state_machine.travel('Falling')
 	elif this.controls.grace_jump_down:
 		state_machine.travel('Jumping')

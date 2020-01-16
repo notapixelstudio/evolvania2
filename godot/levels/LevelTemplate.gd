@@ -14,3 +14,6 @@ func refresh():
 func on_hero_harmed():
 	$HUD/LifeCounter.lose_life(1)
 	
+
+func _on_Harmful_body_entered(body):
+	pass # Replace with function body.
