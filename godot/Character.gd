@@ -99,7 +99,6 @@ func _process(delta):
 	
 	var solid_tiles_underneath = 0
 	for body in $SafeSpotSensor.get_overlapping_bodies():
-		print(body)
 		if body is Solid:
 			solid_tiles_underneath += 1
 	
@@ -120,6 +119,11 @@ func update_flip():
 	
 func harm():
 	state_machine.travel('Stagger')
+	
+func slash():
+	for body in $Graphics/SlashArea.get_overlapping_bodies():
+		if body is Destructible:
+			body.destroy()
 	
 func get_which_wall_collided():
 	for i in range(get_slide_count()):

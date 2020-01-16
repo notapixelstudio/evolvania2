@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://SmashDoor.gd" type="Script" id=1]
+[ext_resource path="res://Destructible.gd" type="Script" id=1]
 [ext_resource path="res://Solid.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/levels/tile_solid.png" type="Texture" id=3]
 
@@ -25,9 +25,10 @@ points = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
 } ]
 0/z_index = 0
 
-[node name="SmashDoor" type="Node2D"]
+[node name="Destructible" type="StaticBody2D"]
 modulate = Color( 0.117647, 1, 0, 1 )
 script = ExtResource( 1 )
 
 [node name="Solid" parent="." instance=ExtResource( 2 )]
 tile_set = SubResource( 2 )
+collision_use_parent = true

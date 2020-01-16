@@ -45,6 +45,10 @@ extents = Vector2( 160, 400 )
 
 [node name="Level" instance=ExtResource( 1 )]
 
+[node name="LifeCounter" parent="HUD" index="0"]
+life = 3
+max_life = 3
+
 [node name="old_book_texture" type="Sprite" parent="." index="1"]
 position = Vector2( 1280, -560 )
 rotation = 1.5708
@@ -107,16 +111,6 @@ texture = ExtResource( 8 )
 position = Vector2( 440, 1679.99 )
 
 [node name="Controls" parent="Hero" index="5" instance=ExtResource( 10 )]
-
-[node name="Camera2D" type="Camera2D" parent="Hero" index="6"]
-current = true
-zoom = Vector2( 1.1, 1.1 )
-limit_left = -3200
-limit_bottom = 2600
-smoothing_enabled = true
-drag_margin_top = 0.6
-drag_margin_bottom = 0.0
-editor_draw_limits = true
 
 [node name="Diamond" parent="." index="9" instance=ExtResource( 11 )]
 position = Vector2( 2520, 1844.5 )

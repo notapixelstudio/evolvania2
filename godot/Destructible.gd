@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name SmashDoor
+class_name Destructible
 
 func destroy():
 	queue_free()

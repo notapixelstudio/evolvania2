@@ -5,7 +5,9 @@ const max_slide_speed = 500.0
 func update(delta):
 	this.apply_gravity(delta)
 	
-	if this.controls.grace_jump_down:
+	if this.controls.spin_just_requested:
+		state_machine.travel('Spin')
+	elif this.controls.grace_jump_down:
 		state_machine.travel('WallJumping')
 	elif this.velocity.y > 0:
 		this.velocity.y = min(this.velocity.y, max_slide_speed)
