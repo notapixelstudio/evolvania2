@@ -98,15 +98,6 @@ func _process(delta):
 	velocity = move_and_slide(velocity, Vector2(0,-1)) # second arg is the floor normal, needed by is_on_floor()
 	last_wall = get_which_wall_collided()
 	
-	var solid_tiles_underneath = 0
-	for body in $SafeSpotSensor.get_overlapping_bodies():
-		if body is Solid:
-			solid_tiles_underneath += 1
-	
-	if solid_tiles_underneath >= 3:
-		# remember the last safe position to respawn to
-		safe_position = position
-		
 func apply_gravity(delta):
 	velocity.y = min(velocity.y + gravity * delta, max_fall_speed)
 	
