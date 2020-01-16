@@ -61,6 +61,7 @@ func set_night_vision(value):
 	
 func refresh():
 	$Graphics/Head/Top/horn.visible = horn
+	$Graphics/Head/Top/horn/HitArea/CollisionShape2D.disabled = not horn
 	$Graphics/Head/Top/ears.visible = ears
 	$Graphics/glow.visible = glowing
 	$Graphics/Head/eyes_spider.visible = night_vision
@@ -144,3 +145,7 @@ func _on_StateMachine_transition(old, new):
 	for state in debug_states:
 		$StateDebug.text += '\n' + state
 	
+func _on_HitArea_body_entered(body):
+	if body is Destructible:
+		body.destroy()
+		
