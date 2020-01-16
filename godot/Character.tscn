@@ -605,12 +605,12 @@ color = Color( 0.462745, 0.486275, 0.996078, 1 )
 
 [node name="body" type="AnimatedSprite" parent="Graphics"]
 position = Vector2( 0, -130 )
-scale = Vector2( -0.517912, 0.5 )
+scale = Vector2( -0.521849, 0.5 )
 frames = SubResource( 7 )
 animation = "idle"
 
 [node name="Head" type="Node2D" parent="Graphics"]
-position = Vector2( 0, -129.403 )
+position = Vector2( 0, -129.215 )
 scale = Vector2( -0.5, 0.5 )
 
 [node name="head" type="Sprite" parent="Graphics/Head"]
@@ -623,7 +623,7 @@ texture = ExtResource( 15 )
 
 [node name="eyes" type="AnimatedSprite" parent="Graphics/Head"]
 frames = SubResource( 8 )
-frame = 15
+frame = 12
 playing = true
 
 [node name="eyes_pain" type="Sprite" parent="Graphics/Head"]
@@ -666,7 +666,7 @@ disabled = true
 [node name="eyes_spider" type="AnimatedSprite" parent="Graphics/Head"]
 visible = false
 frames = SubResource( 59 )
-frame = 15
+frame = 12
 playing = true
 
 [node name="Slash" type="Sprite" parent="Graphics"]

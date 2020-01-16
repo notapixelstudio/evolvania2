@@ -17,7 +17,7 @@ func update(delta):
 		state_machine.travel('Spin')
 	elif this.velocity.y > 0 and coyote_time <= 0:
 		state_machine.travel('Falling')
-	elif this.is_on_floor() and this.controls.grace_jump_down:
+	elif this.controls.grace_jump_down:
 		state_machine.travel('Jumping')
 	elif this.controls.x_dir == 0:
 		state_machine.travel('Idle')
