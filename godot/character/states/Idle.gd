@@ -11,7 +11,7 @@ func update(delta):
 		state_machine.travel('Spin')
 	elif this.velocity.y > 0:
 		state_machine.travel('Falling')
-	elif this.controls.x_dir != 0:
+	elif this.is_on_floor() and this.controls.x_dir != 0:
 		state_machine.travel('Running')
 		
 	this.apply_gravity(delta) # needed to fall
