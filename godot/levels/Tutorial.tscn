@@ -25,21 +25,6 @@ tile_data = PoolIntArray( -1113683, 0, 0, -1048273, 0, 0, -1048270, 0, 0, -10481
 position = Vector2( 520, 1040 )
 tail = 1
 
-[node name="Camera2D" type="Camera2D" parent="Hero" index="7"]
-current = true
-zoom = Vector2( 1.2, 1.2 )
-limit_left = -3200
-limit_bottom = 2600
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = true
-drag_margin_left = 0.1
-drag_margin_top = 0.6
-drag_margin_right = 0.1
-drag_margin_bottom = 0.0
-editor_draw_limits = true
-editor_draw_drag_margin = true
-
 [node name="CanvasModulate" parent="." index="4"]
 color = Color( 0.87451, 0.737255, 0.603922, 1 )
 

@@ -3,7 +3,7 @@
 [ext_resource path="res://Harmful.gd" type="Script" id=1]
 [ext_resource path="res://assets/levels/tile_harmful.png" type="Texture" id=2]
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 40, 40, 0, 40, 0, 0, 40, 0 )
 
 [sub_resource type="TileSet" id=2]
@@ -19,7 +19,7 @@ points = PoolVector2Array( 40, 40, 0, 40, 0, 0, 40, 0 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0

@@ -674,7 +674,7 @@ texture = ExtResource( 15 )
 
 [node name="eyes" type="AnimatedSprite" parent="Graphics/Head"]
 frames = SubResource( 8 )
-frame = 3
+frame = 17
 playing = true
 
 [node name="eyes_pain" type="Sprite" parent="Graphics/Head"]
@@ -728,7 +728,7 @@ disabled = true
 [node name="eyes_spider" type="AnimatedSprite" parent="Graphics/Head"]
 visible = false
 frames = SubResource( 10 )
-frame = 3
+frame = 17
 playing = true
 
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
@@ -784,5 +784,20 @@ script = ExtResource( 36 )
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 27 )
 bus = "SFX"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.2, 1.2 )
+limit_left = -3200
+limit_bottom = 4000
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.1
+drag_margin_top = 0.5
+drag_margin_right = 0.1
+drag_margin_bottom = 0.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
 [connection signal="body_entered" from="Graphics/Head/Top/HitArea" to="." method="_on_HitArea_body_entered"]
 [connection signal="transition" from="StateMachine" to="." method="_on_StateMachine_transition"]

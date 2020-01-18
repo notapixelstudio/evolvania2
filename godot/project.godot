@@ -14,16 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Character.gd"
 }, {
-"base": "Node2D",
-"class": "Destructible",
-"language": "GDScript",
-"path": "res://Destructible.gd"
-}, {
-"base": "Area2D",
-"class": "Harmful",
-"language": "GDScript",
-"path": "res://Harmful.gd"
-}, {
 "base": "TileMap",
 "class": "Solid",
 "language": "GDScript",
@@ -36,8 +26,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Character": "",
-"Destructible": "",
-"Harmful": "",
 "Solid": "",
 "State": ""
 }

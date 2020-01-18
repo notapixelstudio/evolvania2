@@ -1,10 +1,8 @@
 extends Node2D
 
-class_name Destructible
-
 export var integrity : int = 6
 
-func damage(amount):
+func damage(amount, direction):
 	integrity -= amount
 	
 	if integrity <= 0:

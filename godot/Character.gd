@@ -32,6 +32,7 @@ onready var safe_position = position
 var old_state = null
 var velocity : Vector2 = Vector2(0,0)
 var last_wall : int = 0
+var facing : int = 1
 
 func _ready():
 	$Graphics/Head/eyes.playing = true
@@ -123,17 +124,18 @@ func update_horizontal_movement(speed):
 func update_flip():
 	if controls.x_dir != 0:
 		$Graphics.scale.x = controls.x_dir
+		facing = controls.x_dir
 	
 func harm():
 	state_machine.travel('Stagger')
 	
 func slash():
 	for body in $Graphics/SlashArea.get_overlapping_bodies():
-		if body is Destructible:
+		if body.has_method('damage'):
 			if tail == tails.NORMAL:
-				body.damage(2)
+				body.damage(2, facing)
 			elif tail == tails.SPIKES:
-				body.damage(3)
+				body.damage(3, facing)
 	
 func get_which_wall_collided():
 	for i in range(get_slide_count()):
@@ -155,9 +157,9 @@ func _on_StateMachine_transition(old, new):
 		$StateDebug.text += '\n' + state
 	
 func _on_HitArea_body_entered(body):
-	if body is Destructible:
+	if body.has_method('damage'):
 		if horn == horns.NORMAL:
-			body.damage(2)
+			body.damage(2, facing)
 		elif horn == horns.GOD:
-			body.damage(6)
+			body.damage(6, facing)
 			
