@@ -78,7 +78,8 @@ script = ExtResource( 9 )
 tile_data = PoolIntArray( 1311010, 0, 0, 1311011, 0, 0, 1376546, 0, 0, 1376547, 0, 0, 1442082, 0, 0, 1442083, 0, 0, 1507618, 0, 0, 1507619, 0, 0, 1573154, 0, 0, 1573155, 0, 0, 1638690, 0, 0, 1638691, 0, 0 )
 
 [node name="Hero" parent="." index="8" instance=ExtResource( 3 )]
-position = Vector2( 5600, 80 )
+position = Vector2( 480, 1040 )
+tail = 1
 
 [node name="Camera2D" type="Camera2D" parent="Hero" index="7"]
 current = true
@@ -106,6 +107,7 @@ position = Vector2( 13520, 1760 )
 
 [node name="Character" parent="Checkpoint" index="0"]
 horn = 1
+tail = 1
 
 [editable path="Harmful"]
 

@@ -12,9 +12,11 @@ var max_fall_speed : float = 2800.0
 
 enum horns {NONE, NORMAL, GOD}
 enum diets {NONE, HERBIVORE, CARNIVORE}
+enum tails {NONE, NORMAL, SPIKES}
 
 export (horns) var horn = horns.NONE setget set_horn
 export (diets) var diet = diets.NONE setget set_diet
+export (tails) var tail = tails.NONE setget set_tail
 export var ears = false setget set_ears
 export var pigmy = false setget set_pigmy
 export var glowing = false setget set_glowing
@@ -48,6 +50,10 @@ func set_diet(value):
 	diet = value
 	refresh()
 	
+func set_tail(value):
+	tail = value
+	refresh()
+	
 func set_pigmy(value):
 	pigmy = value
 	refresh()
@@ -64,8 +70,15 @@ func refresh():
 	$Graphics/Head/Top/horn.visible = horn == horns.NORMAL
 	$Graphics/Head/Top/horn_god.visible = horn == horns.GOD
 	$Graphics/Head/Top/HitArea/CollisionShape2D.disabled = horn == horns.NONE
+	
+	$Graphics/body/tail.visible = tail != tails.NONE
+	$Graphics/body/tail_spikes.visible = tail == tails.SPIKES
+	$Graphics/SlashArea/CollisionShape2D.disabled = tail == tails.NONE
+	
 	$Graphics/Head/Top/ears.visible = ears
+	
 	$Graphics/glow.visible = glowing
+	
 	$Graphics/Head/eyes_spider.visible = night_vision
 	
 	if pigmy:
@@ -117,7 +130,10 @@ func harm():
 func slash():
 	for body in $Graphics/SlashArea.get_overlapping_bodies():
 		if body is Destructible:
-			body.damage(2)
+			if tail == tails.NORMAL:
+				body.damage(2)
+			elif tail == tails.SPIKES:
+				body.damage(3)
 	
 func get_which_wall_collided():
 	for i in range(get_slide_count()):

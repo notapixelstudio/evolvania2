@@ -101,5 +101,5 @@ spin={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.8, 0.788235, 0.717647, 1 )
+environment/default_clear_color=Color( 0.592157, 0.521569, 0.447059, 1 )
 environment/default_environment="res://default_env.tres"
