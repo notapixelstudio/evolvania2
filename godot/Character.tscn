@@ -674,7 +674,7 @@ texture = ExtResource( 15 )
 
 [node name="eyes" type="AnimatedSprite" parent="Graphics/Head"]
 frames = SubResource( 8 )
-frame = 17
+frame = 9
 playing = true
 
 [node name="eyes_pain" type="Sprite" parent="Graphics/Head"]
@@ -728,7 +728,7 @@ disabled = true
 [node name="eyes_spider" type="AnimatedSprite" parent="Graphics/Head"]
 visible = false
 frames = SubResource( 10 )
-frame = 17
+frame = 9
 playing = true
 
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
@@ -788,8 +788,6 @@ bus = "SFX"
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 1.2, 1.2 )
-limit_left = -3200
-limit_bottom = 4000
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
