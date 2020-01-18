@@ -10,9 +10,10 @@ var ascending_gravity_bonus : float = 5800.0
 var gravity : float = 9000.0
 var max_fall_speed : float = 2800.0
 
+enum horns {NONE, NORMAL, GOD}
 enum diets {NONE, HERBIVORE, CARNIVORE}
 
-export var horn = false setget set_horn
+export (horns) var horn = horns.NONE setget set_horn
 export (diets) var diet = diets.NONE setget set_diet
 export var ears = false setget set_ears
 export var pigmy = false setget set_pigmy
@@ -60,8 +61,9 @@ func set_night_vision(value):
 	refresh()
 	
 func refresh():
-	$Graphics/Head/Top/horn.visible = horn
-	$Graphics/Head/Top/horn/HitArea/CollisionShape2D.disabled = not horn
+	$Graphics/Head/Top/horn.visible = horn == horns.NORMAL
+	$Graphics/Head/Top/horn_god.visible = horn == horns.GOD
+	$Graphics/Head/Top/HitArea/CollisionShape2D.disabled = horn == horns.NONE
 	$Graphics/Head/Top/ears.visible = ears
 	$Graphics/glow.visible = glowing
 	$Graphics/Head/eyes_spider.visible = night_vision
@@ -115,7 +117,7 @@ func harm():
 func slash():
 	for body in $Graphics/SlashArea.get_overlapping_bodies():
 		if body is Destructible:
-			body.destroy()
+			body.damage(2)
 	
 func get_which_wall_collided():
 	for i in range(get_slide_count()):
@@ -138,5 +140,8 @@ func _on_StateMachine_transition(old, new):
 	
 func _on_HitArea_body_entered(body):
 	if body is Destructible:
-		body.destroy()
-		
+		if horn == horns.NORMAL:
+			body.damage(2)
+		elif horn == horns.GOD:
+			body.damage(6)
+			

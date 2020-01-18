@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://levels/LevelTemplate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Solid.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Harmful.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Destructible.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Diamond.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Destructible.gd" type="Script" id=8]
 [ext_resource path="res://Solid.gd" type="Script" id=9]
 [ext_resource path="res://assets/levels/tile_solid.png" type="Texture" id=10]
 
@@ -62,9 +61,7 @@ tile_data = PoolIntArray( 224, 0, 0, 225, 0, 0, 226, 0, 0, 227, 0, 0, 228, 0, 0,
 [node name="Solid" parent="SmashCeil3" index="0"]
 tile_data = PoolIntArray( 1704280, 0, 0, 1704281, 0, 0, 1704282, 0, 0, 1704283, 0, 0, 1704284, 0, 0, 1704285, 0, 0, 1704286, 0, 0, 1704287, 0, 0, 1769816, 0, 0, 1769817, 0, 0, 1769818, 0, 0, 1769819, 0, 0, 1769820, 0, 0, 1769821, 0, 0, 1769822, 0, 0, 1769823, 0, 0 )
 
-[node name="SmashDoor" type="StaticBody2D" parent="." index="6" instance=ExtResource( 6 )]
-modulate = Color( 0.117647, 1, 0, 1 )
-script = ExtResource( 8 )
+[node name="SmashDoor" parent="." index="6" instance=ExtResource( 6 )]
 
 [node name="Solid" type="TileMap" parent="SmashDoor" index="0"]
 modulate = Color( 1, 1, 1, 0.454902 )
@@ -81,7 +78,7 @@ script = ExtResource( 9 )
 tile_data = PoolIntArray( 1311010, 0, 0, 1311011, 0, 0, 1376546, 0, 0, 1376547, 0, 0, 1442082, 0, 0, 1442083, 0, 0, 1507618, 0, 0, 1507619, 0, 0, 1573154, 0, 0, 1573155, 0, 0, 1638690, 0, 0, 1638691, 0, 0 )
 
 [node name="Hero" parent="." index="8" instance=ExtResource( 3 )]
-position = Vector2( 480, 1040 )
+position = Vector2( 5600, 80 )
 
 [node name="Camera2D" type="Camera2D" parent="Hero" index="7"]
 current = true
@@ -108,7 +105,7 @@ position = Vector2( 1440, -480 )
 position = Vector2( 13520, 1760 )
 
 [node name="Character" parent="Checkpoint" index="0"]
-horn = true
+horn = 1
 
 [editable path="Harmful"]
 
