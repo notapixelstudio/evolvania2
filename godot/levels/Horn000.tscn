@@ -109,6 +109,7 @@ texture = ExtResource( 8 )
 
 [node name="Hero" parent="." index="8" instance=ExtResource( 9 )]
 position = Vector2( 440, 1679.99 )
+horn = false
 
 [node name="Controls" parent="Hero" index="5" instance=ExtResource( 10 )]
 
