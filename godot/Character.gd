@@ -13,6 +13,7 @@ var max_fall_speed : float = 2800.0
 enum horns {NONE, NORMAL, GOD}
 enum diets {NONE, HERBIVORE, CARNIVORE}
 enum tails {NONE, NORMAL, SPIKES}
+enum strengths {WEAK, NORMAL}
 
 export (horns) var horn = horns.NONE setget set_horn
 export (diets) var diet = diets.NONE setget set_diet
@@ -21,6 +22,7 @@ export var ears = false setget set_ears
 export var pigmy = false setget set_pigmy
 export var glowing = false setget set_glowing
 export var night_vision = false setget set_night_vision
+export (strengths) var strength = strengths.NORMAL setget set_strength
 
 signal harmed
 signal recovered
@@ -67,6 +69,10 @@ func set_night_vision(value):
 	night_vision = value
 	refresh()
 	
+func set_strength(value):
+	strength = value
+	refresh()
+	
 func refresh():
 	$Graphics/Head/Top/horn.visible = horn == horns.NORMAL
 	$Graphics/Head/Top/horn_god.visible = horn == horns.GOD
@@ -81,6 +87,7 @@ func refresh():
 	$Graphics/glow.visible = glowing
 	
 	$Graphics/Head/eyes_spider.visible = night_vision
+	$Graphics/Head/eyes_black_circles.visible = strength == strengths.WEAK
 	
 	if pigmy:
 		scale = Vector2(0.8,0.8)
