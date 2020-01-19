@@ -37,10 +37,6 @@ points = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
 [node name="Level" instance=ExtResource( 1 )]
 position = Vector2( 17600, 880 )
 
-[node name="LifeCounter" parent="HUD" index="0"]
-life = 3
-max_life = 3
-
 [node name="Background" type="Sprite" parent="." index="1"]
 position = Vector2( 960, 400 )
 rotation = 1.5708
@@ -267,7 +263,7 @@ direction = 1
 position = Vector2( 17280, 1200 )
 
 [node name="Light2D" type="Light2D" parent="." index="40"]
-position = Vector2( 14800, 7200 )
+position = Vector2( 15406.5, 6642.71 )
 texture = ExtResource( 11 )
 texture_scale = 10.0
 energy = 0.7

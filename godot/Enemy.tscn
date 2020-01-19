@@ -1,13 +1,93 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
-[ext_resource path="res://assets/levels/tile_solid.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemies/tick/leg_fw_inner.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemies/tick/eye.png" type="Texture" id=3]
+[ext_resource path="res://assets/enemies/tick/leg_fw_outer.png" type="Texture" id=4]
+[ext_resource path="res://assets/enemies/tick/leg_bk_outer.png" type="Texture" id=5]
+[ext_resource path="res://assets/enemies/tick/leg_bk_inner.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80, 40 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 90, 50 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Walking"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Graphics:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( -2, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 1.1 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Graphics:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( -2, -2, 1 ),
+"update": 0,
+"values": [ Vector2( -88.3223, -40.1292 ), Vector2( -68.236, -49.455 ), Vector2( -88.3223, -40.1292 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Graphics/leg_fw_inner:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( -2, -2, 1 ),
+"update": 0,
+"values": [ Vector2( -13.0886, 2.01048 ), Vector2( 1.17899, 1.88005 ), Vector2( -13.0886, 2.01048 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Graphics/leg_fw_outer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( -2, -2, 1 ),
+"update": 0,
+"values": [ Vector2( -21.5216, 2.00888 ), Vector2( 3.66589, 1.35672 ), Vector2( -21.5216, 2.00888 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Graphics/leg_bk_inner:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( 27.3416, 1.2776 ), Vector2( 16.5811, -0.0266876 ), Vector2( 27.3416, 1.2776 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Graphics/leg_bk_outer:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( -2, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 31.9565, 2.43319 ), Vector2( 10.6746, 1.06365 ), Vector2( 31.9565, 2.43319 ) ]
+}
 
 [node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -25,11 +105,44 @@ shape = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
-[node name="tile_solid" type="Sprite" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 80, 40 )
-scale = Vector2( 4, 2 )
+[node name="Graphics" type="Node2D" parent="."]
+position = Vector2( -77.5885, -45.1128 )
+scale = Vector2( 0.946561, 1.05344 )
+
+[node name="eye" type="Sprite" parent="Graphics"]
+position = Vector2( 12, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="leg_fw_inner" type="Sprite" parent="Graphics"]
+position = Vector2( -5.46423, 1.94078 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
+centered = false
+
+[node name="leg_fw_outer" type="Sprite" parent="Graphics"]
+position = Vector2( -8.06179, 1.66038 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="leg_bk_inner" type="Sprite" parent="Graphics"]
+position = Vector2( 21.5913, 0.580609 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="leg_bk_outer" type="Sprite" parent="Graphics"]
+position = Vector2( 20.5838, 1.70133 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Walking"
+playback_speed = 1.5
+anims/Walking = SubResource( 3 )
 [connection signal="body_entered" from="HarmfulArea" to="." method="_on_HarmfulArea_body_entered"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_screen_exited"]

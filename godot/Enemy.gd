@@ -33,6 +33,8 @@ func _process(delta):
 	velocity = move_and_slide(velocity, Vector2(0,-1))
 	velocity.x = 0
 	
+	$Graphics/eye.flip_h = direction == 1
+	
 func _on_screen_entered():
 	set_process(true)
 	
