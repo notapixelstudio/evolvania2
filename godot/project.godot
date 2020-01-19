@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Character.gd"
 }, {
+"base": "Resource",
+"class": "Genetics",
+"language": "GDScript",
+"path": "res://character/Genetics.gd"
+}, {
 "base": "TileMap",
 "class": "Solid",
 "language": "GDScript",
@@ -26,6 +31,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Character": "",
+"Genetics": "",
 "Solid": "",
 "State": ""
 }
@@ -34,6 +40,7 @@ _global_script_class_icons={
 
 config/name="Evolvania 2"
 run/main_scene="res://levels/Horn000.tscn"
+config/icon="res://hero.png"
 
 [display]
 
